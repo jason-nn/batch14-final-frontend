@@ -25,10 +25,7 @@ const App: React.FC = () => {
   //     },
   //   })
   //     .then((response) => {
-  //       const data = response.data;
-
-  //       const id = data.id;
-  //       const token = data.token;
+  //       const token = response.data.token;
 
   //       axios({
   //         method: 'post',
@@ -38,9 +35,8 @@ const App: React.FC = () => {
   //           Authorization: `Bearer ${token}`,
   //         },
   //         data: {
-  //           user_id: id,
   //           cryptocurrency_id: 1,
-  //           price: 40000,
+  //           price: 47000,
   //           operator: 'lower',
   //         },
   //       })
