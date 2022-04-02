@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Logo from 'components/shared/Logo';
 
@@ -13,11 +14,11 @@ const SignInOuterContainer = styled.div`
 `;
 
 const SignInInnerContainer = styled.div`
-  background-color: white;
+  background-color: #ffffff;
   padding: 30px;
   border-radius: 16px;
 
-  box-shadow: -0.1rem -0.1rem 0.3rem #fff,
+  box-shadow: -0.1rem -0.1rem 0.3rem #ffffff,
     0.1rem 0.1rem 0.3rem rgb(174 174 192 / 40%);
 
   display: flex;
@@ -30,6 +31,17 @@ const Header = styled.div`
   margin: 10px 0px;
 `;
 
+const Footer = styled.div`
+  margin: 10px 0px;
+
+  font-family: CircularStd-Black;
+  font-size: 14px;
+
+  a {
+    color: #1d4ed8;
+  }
+`;
+
 const SignIn: React.FC = () => {
   return (
     <SignInOuterContainer>
@@ -37,6 +49,11 @@ const SignIn: React.FC = () => {
         <Header>
           <Logo scale={50} />
         </Header>
+
+        <Footer>
+          No account yet?&nbsp;
+          <Link to="/sign-up">Sign up here</Link>
+        </Footer>
       </SignInInnerContainer>
     </SignInOuterContainer>
   );
