@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Alerts from 'pages/Alerts';
 import Home from 'pages/Home';
 import Purchases from 'pages/Purchases';
+import Alerts from 'pages/Alerts';
 import SignIn from 'pages/SignIn';
 import SignUp from 'pages/SignUp';
 
