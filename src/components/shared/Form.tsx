@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import PrimaryButton from 'components/shared/buttons/PrimaryButton';
+
 interface FormProps {
   header: string;
   onSubmit: () => void;
   disabled: boolean;
+  buttonText: string;
 }
 
 const FormContainer = styled.form`
@@ -13,12 +16,6 @@ const FormContainer = styled.form`
   gap: 20px;
 
   width: 100%;
-
-  & > div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
 
   label {
     text-transform: uppercase;
@@ -33,10 +30,16 @@ const Header = styled.div`
   font-size: 25px;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
 const Form: React.FC<FormProps> = ({
   header,
   onSubmit,
   disabled,
+  buttonText,
   children,
 }) => {
   return (
@@ -49,7 +52,12 @@ const Form: React.FC<FormProps> = ({
       }}
     >
       <Header>{header}</Header>
+
       {children}
+
+      <ButtonContainer>
+        <PrimaryButton buttonText={buttonText} disabled={disabled} />
+      </ButtonContainer>
     </FormContainer>
   );
 };

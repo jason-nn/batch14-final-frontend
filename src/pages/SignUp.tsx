@@ -20,6 +20,7 @@ const SignUp: React.FC = () => {
             console.log('Call create registration API');
           }}
           disabled={true}
+          buttonText="Sign up"
         >
           <div>
             <label>Email</label>

@@ -19,7 +19,8 @@ const SignIn: React.FC = () => {
           onSubmit={() => {
             console.log('Call create session API');
           }}
-          disabled={true}
+          disabled={false}
+          buttonText="Sign in"
         >
           <div>
             <label>Email</label>
@@ -27,6 +28,7 @@ const SignIn: React.FC = () => {
           </div>
           <div>
             <label>Password</label>
+            <input type="text" />
           </div>
         </Form>
 
