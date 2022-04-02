@@ -49,3 +49,13 @@ label,
 input {
   display: block;
 }
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 50px #f4f6f8 inset;
+  -webkit-box-shadow: 0 0 0 50px #f4f6f8 inset;
+}
+
+input:-webkit-autofill:focus {
+  box-shadow: 0 0 0 50px #f4f6f8 inset;
+  -webkit-box-shadow: 0 0 0 50px #f4f6f8 inset;
+}
