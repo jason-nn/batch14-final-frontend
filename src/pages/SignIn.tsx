@@ -7,6 +7,7 @@ import AuthHeader from 'components/auth/AuthHeader';
 import AuthFooter from 'components/auth/AuthFooter';
 
 import Form from 'components/shared/Form';
+import BaseInput from 'components/shared/inputs/BaseInput';
 
 const SignIn: React.FC = () => {
   return (
@@ -19,17 +20,11 @@ const SignIn: React.FC = () => {
           onSubmit={() => {
             console.log('Call create session API');
           }}
-          disabled={false}
+          disabled={true}
           buttonText="Sign in"
         >
-          <div>
-            <label>Email</label>
-            <input type="text" />
-          </div>
-          <div>
-            <label>Password</label>
-            <input type="text" />
-          </div>
+          <BaseInput label="Email" type="text" />
+          <BaseInput label="Password" type="password" />
         </Form>
 
         <AuthFooter>

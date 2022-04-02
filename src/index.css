@@ -63,3 +63,16 @@ input:-webkit-autofill:focus {
 ::selection {
   background-color: #dbeafe;
 }
+
+::-webkit-input-placeholder {
+  color: #a3a3a3;
+}
+::-moz-placeholder {
+  color: #a3a3a3;
+}
+:-ms-input-placeholder {
+  color: #a3a3a3;
+}
+:-moz-placeholder {
+  color: #a3a3a3;
+}

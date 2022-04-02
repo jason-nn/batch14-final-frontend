@@ -16,13 +16,6 @@ const FormContainer = styled.form`
   gap: 20px;
 
   width: 100%;
-
-  label {
-    text-transform: uppercase;
-    color: #1d4ed8;
-    font-family: CircularStd-Bold;
-    font-size: 10px;
-  }
 `;
 
 const Header = styled.div`

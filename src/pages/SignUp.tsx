@@ -21,17 +21,7 @@ const SignUp: React.FC = () => {
           }}
           disabled={true}
           buttonText="Sign up"
-        >
-          <div>
-            <label>Email</label>
-          </div>
-          <div>
-            <label>Password</label>
-          </div>
-          <div>
-            <label>Password Confirmation</label>
-          </div>
-        </Form>
+        ></Form>
 
         <AuthFooter>
           Already have an account?&nbsp;
