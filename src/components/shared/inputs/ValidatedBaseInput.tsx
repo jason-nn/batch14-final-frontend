@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { z } from 'zod';
 
@@ -7,6 +7,7 @@ import BaseInput, { BaseInputProps } from 'components/shared/inputs/BaseInput';
 interface ValidatedBaseInputProps extends BaseInputProps {
   setIsValid: React.Dispatch<boolean>;
   validators: z.ZodString | z.ZodNumber;
+  watch?: string;
 }
 
 const ValidatedBaseInputContainer = styled.div`
@@ -30,8 +31,30 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
   setValue,
   setIsValid,
   validators,
+  watch,
 }) => {
   const [error, setError] = useState<String>('');
+
+  const validate = useCallback(
+    (value: string) => {
+      const zod = validators.safeParse(value);
+      if (zod.success) {
+        setIsValid(true);
+        setError('');
+      } else {
+        setIsValid(false);
+        setError(zod.error.issues[0].message);
+      }
+    },
+    [setIsValid, validators]
+  );
+
+  useEffect(() => {
+    if (watch) {
+      console.log(watch);
+      validate(value);
+    }
+  }, [watch, validate, value]);
 
   return (
     <ValidatedBaseInputContainer>
@@ -42,14 +65,7 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
         value={value}
         setValue={setValue}
         onChange={(value) => {
-          const zod = validators.safeParse(value);
-          if (zod.success) {
-            setIsValid(true);
-            setError('');
-          } else {
-            setIsValid(false);
-            setError(zod.error.issues[0].message);
-          }
+          validate(value);
         }}
       />
       {error.length ? <Error>{error}</Error> : null}
