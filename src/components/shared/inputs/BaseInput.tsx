@@ -7,6 +7,7 @@ interface BaseInputProps {
   placeholder?: string;
   value: string;
   setValue: React.Dispatch<string>;
+  onChange?: (value: string) => void;
 }
 
 const BaseInputContainer = styled.div`
@@ -43,6 +44,7 @@ const BaseInput: React.FC<BaseInputProps> = ({
   placeholder,
   value,
   setValue,
+  onChange,
 }) => {
   return (
     <BaseInputContainer>
@@ -53,6 +55,9 @@ const BaseInput: React.FC<BaseInputProps> = ({
         value={value}
         onChange={(e) => {
           setValue(e.target.value);
+          if (onChange) {
+            onChange(e.target.value);
+          }
         }}
         onWheel={(e) => {
           if (type === 'number') {
@@ -65,3 +70,4 @@ const BaseInput: React.FC<BaseInputProps> = ({
 };
 
 export default BaseInput;
+export type { BaseInputProps };
