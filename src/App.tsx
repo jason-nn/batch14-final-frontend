@@ -1,50 +1,15 @@
 import React from 'react';
-// import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import axios from 'axios';
 
-import Alerts from './pages/Alerts';
-import Home from './pages/Home';
-import Purchases from './pages/Purchases';
+import Alerts from 'pages/Alerts';
+import Home from 'pages/Home';
+import Purchases from 'pages/Purchases';
+import SignIn from 'pages/SignIn';
+import SignUp from 'pages/SignUp';
 
 const App: React.FC = () => {
   axios.defaults.baseURL = 'http://localhost:4000';
-
-  // useEffect(() => {
-  //   axios({
-  //     method: 'post',
-  //     url: 'users/sign_in',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     data: {
-  //       user: {
-  //         email: 'jason@hodlr.com',
-  //         password: 'password',
-  //       },
-  //     },
-  //   })
-  //     .then((response) => {
-  //       const token = response.data.token;
-
-  //       axios({
-  //         method: 'post',
-  //         url: 'api/v1/alerts',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         data: {
-  //           cryptocurrency_id: 1,
-  //           price: 47000,
-  //           operator: 'lower',
-  //         },
-  //       })
-  //         .then((response) => console.log(response))
-  //         .catch((error) => console.log(error));
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, []);
 
   return (
     <BrowserRouter>
@@ -52,6 +17,8 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/purchases" element={<Purchases />} />
         <Route path="/alerts" element={<Alerts />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );
