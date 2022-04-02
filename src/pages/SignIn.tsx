@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import AuthOuterContainer from 'components/auth/AuthOuterContainer';
@@ -10,6 +11,9 @@ import Form from 'components/shared/Form';
 import BaseInput from 'components/shared/inputs/BaseInput';
 
 const SignIn: React.FC = () => {
+  const [emailValue, setEmailValue] = useState<string>('');
+  const [passwordValue, setPasswordValue] = useState<string>('');
+
   return (
     <AuthOuterContainer>
       <AuthInnerContainer>
@@ -23,8 +27,18 @@ const SignIn: React.FC = () => {
           disabled={true}
           buttonText="Sign in"
         >
-          <BaseInput label="Email" type="text" />
-          <BaseInput label="Password" type="password" />
+          <BaseInput
+            label="Email"
+            type="text"
+            value={emailValue}
+            setValue={setEmailValue}
+          />
+          <BaseInput
+            label="Password"
+            type="password"
+            value={passwordValue}
+            setValue={setPasswordValue}
+          />
         </Form>
 
         <AuthFooter>

@@ -5,6 +5,8 @@ interface BaseInputProps {
   label: string;
   type: 'text' | 'number' | 'password';
   placeholder?: string;
+  value: string;
+  setValue: React.Dispatch<string>;
 }
 
 const BaseInputContainer = styled.div`
@@ -35,11 +37,29 @@ const BaseInputContainer = styled.div`
   }
 `;
 
-const BaseInput: React.FC<BaseInputProps> = ({ label, type, placeholder }) => {
+const BaseInput: React.FC<BaseInputProps> = ({
+  label,
+  type,
+  placeholder,
+  value,
+  setValue,
+}) => {
   return (
     <BaseInputContainer>
       <label>{label}</label>
-      <input type={type} placeholder={placeholder} />
+      <input
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+        onWheel={(e) => {
+          if (type === 'number') {
+            e.currentTarget.blur();
+          }
+        }}
+      />
     </BaseInputContainer>
   );
 };
