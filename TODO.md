@@ -1,7 +1,8 @@
 # To Do
 
-- [ ] create validated base input
-- [ ] add validated base input to sign in and sign up pages
+- [x] create validated base input
+- [x] add validated base input to sign in and sign up pages
+- [ ] add animation to error message on mount and unmount
 
 - [ ] add loading prop and visual to button
 - [ ] add signed in component to reroute user if not signed in
