@@ -51,7 +51,11 @@ const Form: React.FC<FormProps> = ({
       {children}
 
       <ButtonContainer>
-        <PrimaryButton buttonText={buttonText} disabled={disabled} />
+        <PrimaryButton
+          buttonText={buttonText}
+          disabled={disabled}
+          loading={submitting}
+        />
       </ButtonContainer>
     </FormContainer>
   );

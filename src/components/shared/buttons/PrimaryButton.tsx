@@ -5,18 +5,21 @@ import BaseButton from 'components/shared/buttons/BaseButton';
 interface PrimaryButtonProps {
   buttonText: string;
   disabled: boolean;
+  loading: boolean;
   onClick?: () => void;
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   buttonText,
   disabled,
+  loading,
   onClick,
 }) => {
   return (
     <BaseButton
       buttonText={buttonText}
       disabled={disabled}
+      loading={loading}
       onClick={onClick}
       colorScheme={{
         activeText: '#FFFFFF',

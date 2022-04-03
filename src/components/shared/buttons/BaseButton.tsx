@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 interface ColorScheme {
   activeText: string;
@@ -13,12 +14,14 @@ interface ColorScheme {
 interface BaseButtonProps {
   buttonText: string;
   disabled: boolean;
+  loading: boolean;
   onClick?: () => void;
   colorScheme: ColorScheme;
 }
 
 interface ButtonContainerProps {
   disabled: boolean;
+  loading: boolean;
   colorScheme: ColorScheme;
 }
 
@@ -44,31 +47,53 @@ const ButtonContainer = styled.div<ButtonContainerProps>`
     font-size: 15px;
     font-family: CircularStd-Bold;
 
-    cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+    cursor: ${(props) =>
+      props.disabled || props.loading ? 'not-allowed' : 'pointer'};
     transition: 250ms ease-in-out;
   }
 
   button:hover {
-    transform: ${(props) => (props.disabled ? 'scale(1.0)' : 'scale(1.1)')};
+    transform: ${(props) =>
+      props.disabled || props.loading ? 'scale(1.0)' : 'scale(1.1)'};
+  }
+`;
+
+const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  span {
+    display: block;
   }
 `;
 
 const BaseButton: React.FC<BaseButtonProps> = ({
   buttonText,
   disabled,
+  loading,
   onClick,
   colorScheme,
 }) => {
   return (
-    <ButtonContainer disabled={disabled} colorScheme={colorScheme}>
+    <ButtonContainer
+      disabled={disabled}
+      loading={loading}
+      colorScheme={colorScheme}
+    >
       <button
         onClick={() => {
-          if (!disabled && onClick) {
+          if (!disabled && !loading && onClick) {
             onClick();
           }
         }}
       >
-        {buttonText}
+        {loading ? (
+          <LoaderContainer>
+            <ClipLoader size={19} color="white" />
+          </LoaderContainer>
+        ) : (
+          <span>{buttonText}</span>
+        )}
       </button>
     </ButtonContainer>
   );
