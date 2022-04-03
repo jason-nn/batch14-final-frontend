@@ -18,12 +18,9 @@ const SignUp: React.FC = () => {
   const [isPasswordValueValid, setIsPasswordValueValid] =
     useState<boolean>(false);
 
-  const [passwordConfirmationValue, setPasswordConfirmationValue] =
-    useState<string>('');
-  const [
-    isPasswordConfirmationValueValid,
-    setIsPasswordConfirmationValueValid,
-  ] = useState<boolean>(false);
+  const [confirmPasswordValue, setConfirmPasswordValue] = useState<string>('');
+  const [isConfirmPasswordValueValid, setIsConfirmPasswordValueValid] =
+    useState<boolean>(false);
 
   return (
     <AuthOuterContainer>
@@ -39,8 +36,8 @@ const SignUp: React.FC = () => {
             !(
               isEmailValueValid &&
               isPasswordValueValid &&
-              isPasswordConfirmationValueValid &&
-              isPasswordValueValid === isPasswordConfirmationValueValid
+              isConfirmPasswordValueValid &&
+              isPasswordValueValid === isConfirmPasswordValueValid
             )
           }
           buttonText="Sign up"
@@ -66,17 +63,17 @@ const SignUp: React.FC = () => {
               .string()
               .min(1, { message: 'This field is required' })
               .min(8, { message: 'Must be at least 8 characters' })
-              .regex(new RegExp(`\\b${passwordConfirmationValue}\\b`), {
+              .regex(new RegExp(`\\b${confirmPasswordValue}\\b`), {
                 message: 'Passwords must match',
               })}
-            watch={passwordConfirmationValue}
+            watch={confirmPasswordValue}
           />
           <ValidatedBaseInput
-            label="Password Confirmation"
+            label="Confirm Password"
             type="password"
-            value={passwordConfirmationValue}
-            setValue={setPasswordConfirmationValue}
-            setIsValid={setIsPasswordConfirmationValueValid}
+            value={confirmPasswordValue}
+            setValue={setConfirmPasswordValue}
+            setIsValid={setIsConfirmPasswordValueValid}
             validators={z
               .string()
               .min(1, { message: 'This field is required' })
