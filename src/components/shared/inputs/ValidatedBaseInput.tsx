@@ -52,7 +52,6 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
 
   useEffect(() => {
     if (watch) {
-      console.log(watch);
       validate(value);
     }
   }, [watch, validate, value]);
