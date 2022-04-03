@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-const AuthInnerContainer = styled.div`
+const AuthInnerContainerContainer = styled.div`
   background-color: #ffffff;
   padding: 30px;
   border-radius: 16px;
@@ -12,5 +13,17 @@ const AuthInnerContainer = styled.div`
   align-items: center;
   gap: 20px;
 `;
+
+export const AuthInnerContainer: React.FC = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: '-100vh' }}
+      animate={{ opacity: 1, y: '0' }}
+      transition={{ ease: 'easeInOut', duration: 0.5 }}
+    >
+      <AuthInnerContainerContainer>{children}</AuthInnerContainerContainer>
+    </motion.div>
+  );
+};
 
 export default AuthInnerContainer;

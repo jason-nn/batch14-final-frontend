@@ -72,7 +72,10 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
       <AnimatePresence>
         {error.length ? (
           <motion.div
-            key={`${label.toLowerCase().split(' ').join('-')}-error`}
+            key={`${label
+              .toLowerCase()
+              .split(' ')
+              .join('-')}-validated-base-input-error`}
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
