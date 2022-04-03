@@ -60,10 +60,6 @@ input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 50px #f4f6f8 inset;
 }
 
-::selection {
-  background-color: #dbeafe;
-}
-
 ::-webkit-input-placeholder {
   color: #a3a3a3;
 }
