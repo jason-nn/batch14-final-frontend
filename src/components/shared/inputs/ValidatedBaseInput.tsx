@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { z } from 'zod';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import BaseInput, { BaseInputProps } from 'components/shared/inputs/BaseInput';
 
@@ -68,7 +69,19 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
           validate(value);
         }}
       />
-      {error.length ? <Error>{error}</Error> : null}
+      <AnimatePresence>
+        {error.length ? (
+          <motion.div
+            key={`${label.toLowerCase().split(' ').join('-')}-error`}
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ ease: 'easeInOut', duration: 0.25 }}
+          >
+            <Error>{error}</Error>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </ValidatedBaseInputContainer>
   );
 };
