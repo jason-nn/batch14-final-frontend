@@ -9,7 +9,11 @@ import SignIn from 'pages/SignIn';
 import SignUp from 'pages/SignUp';
 
 const App: React.FC = () => {
+  // dev
   axios.defaults.baseURL = 'http://localhost:4000';
+
+  // prod
+  // axios.defaults.baseURL = 'https://hodlrbyjason.herokuapp.com/';
 
   return (
     <BrowserRouter>
