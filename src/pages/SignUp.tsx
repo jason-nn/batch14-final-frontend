@@ -11,6 +11,8 @@ import Form from 'components/shared/Form';
 import ValidatedBaseInput from 'components/shared/inputs/ValidatedBaseInput';
 
 const SignUp: React.FC = () => {
+  const [submittingValue, setSubmittingValue] = useState<boolean>(false);
+
   const [emailValue, setEmailValue] = useState<string>('');
   const [isEmailValueValid, setIsEmailValueValid] = useState<boolean>(false);
 
@@ -30,7 +32,12 @@ const SignUp: React.FC = () => {
         <Form
           header="Sign Up"
           onSubmit={() => {
+            setSubmittingValue(true);
             console.log('Call create registration API');
+            setTimeout(() => {
+              console.log('Finish call');
+              setSubmittingValue(false);
+            }, 3000);
           }}
           disabled={
             !(
@@ -40,6 +47,7 @@ const SignUp: React.FC = () => {
               isPasswordValueValid === isConfirmPasswordValueValid
             )
           }
+          submitting={submittingValue}
           buttonText="Sign up"
         >
           <ValidatedBaseInput

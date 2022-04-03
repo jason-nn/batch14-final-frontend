@@ -7,6 +7,7 @@ interface FormProps {
   header: string;
   onSubmit: () => void;
   disabled: boolean;
+  submitting: boolean;
   buttonText: string;
 }
 
@@ -32,6 +33,7 @@ const Form: React.FC<FormProps> = ({
   header,
   onSubmit,
   disabled,
+  submitting,
   buttonText,
   children,
 }) => {
@@ -39,7 +41,7 @@ const Form: React.FC<FormProps> = ({
     <FormContainer
       onSubmit={(e) => {
         e.preventDefault();
-        if (!disabled) {
+        if (!disabled && !submitting) {
           onSubmit();
         }
       }}

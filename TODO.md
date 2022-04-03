@@ -5,6 +5,7 @@
 - [x] add animation to error message on mount and unmount
 
 - [ ] add loading prop and visual to button
+- [x] add submitting logic to form
 - [ ] add signed in component to reroute user if not signed in
 - [ ] add calls to backend sign in and sign up
 

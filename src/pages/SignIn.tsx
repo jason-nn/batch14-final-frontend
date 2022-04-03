@@ -11,6 +11,8 @@ import Form from 'components/shared/Form';
 import ValidatedBaseInput from 'components/shared/inputs/ValidatedBaseInput';
 
 const SignIn: React.FC = () => {
+  const [submittingValue, setSubmittingValue] = useState<boolean>(false);
+
   const [emailValue, setEmailValue] = useState<string>('');
   const [isEmailValueValid, setIsEmailValueValid] = useState<boolean>(false);
 
@@ -26,9 +28,15 @@ const SignIn: React.FC = () => {
         <Form
           header="Sign In"
           onSubmit={() => {
+            setSubmittingValue(true);
             console.log('Call create session API');
+            setTimeout(() => {
+              console.log('Finish call');
+              setSubmittingValue(false);
+            }, 3000);
           }}
           disabled={!(isEmailValueValid && isPasswordValueValid)}
+          submitting={submittingValue}
           buttonText="Sign in"
         >
           <ValidatedBaseInput
