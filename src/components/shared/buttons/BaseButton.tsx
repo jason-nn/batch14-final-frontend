@@ -21,7 +21,7 @@ interface BaseButtonProps {
 
 interface ButtonContainerProps {
   disabled: boolean;
-  loading: boolean;
+  loading: number;
   colorScheme: ColorScheme;
 }
 
@@ -77,7 +77,10 @@ const BaseButton: React.FC<BaseButtonProps> = ({
   return (
     <ButtonContainer
       disabled={disabled}
-      loading={loading}
+      // added unary operator to loading to convert boolean to number
+      // conditionals are still valid but resolves html attribute warning
+      // https://maximeblanc.fr/blog/how-to-fix-the-received-true-for-a-non-boolean-attribute-error
+      loading={+loading}
       colorScheme={colorScheme}
     >
       <button
