@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { z } from 'zod';
+
+import hodlr from 'services/hodlr';
 
 import AuthOuterContainer from 'components/auth/AuthOuterContainer';
 import AuthInnerContainer from 'components/auth/AuthInnerContainer';
@@ -20,6 +22,25 @@ const SignIn: React.FC = () => {
   const [isPasswordValueValid, setIsPasswordValueValid] =
     useState<boolean>(false);
 
+  const onSubmit = useCallback(() => {
+    setSubmittingValue(true);
+    hodlr
+      .signIn({ email: emailValue, password: passwordValue })
+      .then((response) => {
+        console.log(response);
+        setSubmittingValue(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setSubmittingValue(false);
+      });
+  }, [emailValue, passwordValue]);
+
+  const disabled = useMemo(
+    () => !(isEmailValueValid && isPasswordValueValid),
+    [isEmailValueValid, isPasswordValueValid]
+  );
+
   return (
     <AuthOuterContainer>
       <AuthInnerContainer>
@@ -27,15 +48,8 @@ const SignIn: React.FC = () => {
 
         <Form
           header="Sign In"
-          onSubmit={() => {
-            setSubmittingValue(true);
-            console.log('Call create session API');
-            setTimeout(() => {
-              console.log('Finish call');
-              setSubmittingValue(false);
-            }, 3000);
-          }}
-          disabled={!(isEmailValueValid && isPasswordValueValid)}
+          onSubmit={onSubmit}
+          disabled={disabled}
           submitting={submittingValue}
           buttonText="Sign in"
         >

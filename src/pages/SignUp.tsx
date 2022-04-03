@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { z } from 'zod';
+
+import hodlr from 'services/hodlr';
 
 import AuthOuterContainer from 'components/auth/AuthOuterContainer';
 import AuthInnerContainer from 'components/auth/AuthInnerContainer';
@@ -24,6 +26,31 @@ const SignUp: React.FC = () => {
   const [isConfirmPasswordValueValid, setIsConfirmPasswordValueValid] =
     useState<boolean>(false);
 
+  const onSubmit = useCallback(() => {
+    setSubmittingValue(true);
+    hodlr
+      .signUp({ email: emailValue, password: passwordValue })
+      .then((response) => {
+        console.log(response);
+        setSubmittingValue(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setSubmittingValue(false);
+      });
+  }, [emailValue, passwordValue]);
+
+  const disabled = useMemo(
+    () =>
+      !(
+        isEmailValueValid &&
+        isPasswordValueValid &&
+        isConfirmPasswordValueValid &&
+        isPasswordValueValid === isConfirmPasswordValueValid
+      ),
+    [isEmailValueValid, isPasswordValueValid, isConfirmPasswordValueValid]
+  );
+
   return (
     <AuthOuterContainer>
       <AuthInnerContainer>
@@ -31,22 +58,8 @@ const SignUp: React.FC = () => {
 
         <Form
           header="Sign Up"
-          onSubmit={() => {
-            setSubmittingValue(true);
-            console.log('Call create registration API');
-            setTimeout(() => {
-              console.log('Finish call');
-              setSubmittingValue(false);
-            }, 3000);
-          }}
-          disabled={
-            !(
-              isEmailValueValid &&
-              isPasswordValueValid &&
-              isConfirmPasswordValueValid &&
-              isPasswordValueValid === isConfirmPasswordValueValid
-            )
-          }
+          onSubmit={onSubmit}
+          disabled={disabled}
           submitting={submittingValue}
           buttonText="Sign up"
         >
