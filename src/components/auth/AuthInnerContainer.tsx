@@ -12,6 +12,9 @@ const AuthInnerContainerContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
+
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 `;
 
 export const AuthInnerContainer: React.FC = ({ children }) => {

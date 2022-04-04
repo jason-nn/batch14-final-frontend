@@ -26,15 +26,17 @@ const BaseInputContainer = styled.div`
     background-color: #f4f6f8;
     border-radius: 0px 16px;
     padding: 10px 30px;
-    border: 1.5px solid #f4f6f8;
+    border: none;
 
     font-size: 14px;
     font-family: CircularStd-Bold;
+
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
+      rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
 
   input:focus {
     outline: none;
-    border: 1.5px solid #1d4ed8;
   }
 `;
 
