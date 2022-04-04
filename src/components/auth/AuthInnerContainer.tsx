@@ -19,7 +19,7 @@ export const AuthInnerContainer: React.FC = ({ children }) => {
     <motion.div
       initial={{ opacity: 0, y: '-100vh' }}
       animate={{ opacity: 1, y: '0' }}
-      transition={{ ease: 'easeInOut', duration: 0.5 }}
+      transition={{ duration: 0.5 }}
     >
       <AuthInnerContainerContainer>{children}</AuthInnerContainerContainer>
     </motion.div>

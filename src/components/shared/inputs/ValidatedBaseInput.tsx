@@ -75,10 +75,9 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
               .toLowerCase()
               .split(' ')
               .join('-')}-validated-base-input-error`}
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ ease: 'easeInOut', duration: 0.25 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
             <Error>{error}</Error>
           </motion.div>
