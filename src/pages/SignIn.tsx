@@ -10,12 +10,14 @@ import AuthOuterContainer from 'components/auth/AuthOuterContainer';
 import Form from 'components/shared/Form';
 import { UserContext } from 'components/shared/UserContextProvider';
 import ValidatedBaseInput from 'components/shared/inputs/ValidatedBaseInput';
+import { ToastContext } from 'components/shared/toasts/ToastProvider';
 
 import hodlr from 'services/hodlr';
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
   const { userDispatch } = useContext(UserContext);
+  const { toastDispatch } = useContext(ToastContext);
 
   const [submittingValue, setSubmittingValue] = useState<boolean>(false);
 
@@ -42,18 +44,28 @@ const SignIn: React.FC = () => {
             },
           });
           setSubmittingValue(false);
+          if (toastDispatch) {
+            toastDispatch({ type: 'SUCCESS', message: 'Successful sign in' });
+          }
           navigate('/', { replace: true });
         } else {
           setSubmittingValue(false);
-          // set error here
+          if (toastDispatch) {
+            toastDispatch({ type: 'SUCCESS', message: 'Internal error' });
+          }
         }
       })
       .catch((error) => {
         console.log(error);
         setSubmittingValue(false);
-        // set invalid username or password error here
+        if (toastDispatch) {
+          toastDispatch({
+            type: 'ERROR',
+            message: 'Invalid username or password',
+          });
+        }
       });
-  }, [emailValue, passwordValue, userDispatch, navigate]);
+  }, [emailValue, passwordValue, userDispatch, toastDispatch, navigate]);
 
   const disabled = useMemo(
     () => !(isEmailValueValid && isPasswordValueValid),

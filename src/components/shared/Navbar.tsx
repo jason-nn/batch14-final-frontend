@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Logo from 'components/shared/Logo';
 import { UserContext } from 'components/shared/UserContextProvider';
 import SecondaryButton from 'components/shared/buttons/SecondaryButton';
+import { ToastContext } from 'components/shared/toasts/ToastProvider';
 
 interface NavbarProps {
   selected: 'home' | 'purchases' | 'alerts';
@@ -57,6 +58,7 @@ const Filler = styled.div`
 
 const Navbar: React.FC<NavbarProps> = ({ selected }) => {
   const { userDispatch } = useContext(UserContext);
+  const { toastDispatch } = useContext(ToastContext);
 
   const [buttonIsLoadingValue, setbuttonIsLoadingValue] = useState(false);
 
@@ -68,7 +70,10 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
         userDispatch({
           type: 'SIGNOUT',
         });
-      }, 1000);
+        if (toastDispatch) {
+          toastDispatch({ type: 'SUCCESS', message: 'Successful sign out' });
+        }
+      }, 500);
     }
   };
 
