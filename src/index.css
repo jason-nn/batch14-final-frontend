@@ -50,14 +50,12 @@ input {
   display: block;
 }
 
-input:-webkit-autofill {
-  box-shadow: 0 0 0 50px #f4f6f8 inset;
-  -webkit-box-shadow: 0 0 0 50px #f4f6f8 inset;
-}
-
-input:-webkit-autofill:focus {
-  box-shadow: 0 0 0 50px #f4f6f8 inset;
-  -webkit-box-shadow: 0 0 0 50px #f4f6f8 inset;
+/* removes autocomplete color change */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 ::-webkit-input-placeholder {
