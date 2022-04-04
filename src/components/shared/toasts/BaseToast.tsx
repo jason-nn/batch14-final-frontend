@@ -28,12 +28,12 @@ const BaseToastInnerContainer = styled.div<BaseToastInnerContainerProps>`
   background-color: ${(props) => props.colorScheme.background};
   border: 1.5px solid ${(props) => props.colorScheme.border};
 
-  padding: 12px 40px;
+  padding: 12px 30px;
   border-radius: 16px 0px;
 
   span {
     color: ${(props) => props.colorScheme.text};
-    font-size: 18px;
+    font-size: 17px;
     font-family: CircularStd-Bold;
   }
 
