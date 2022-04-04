@@ -53,7 +53,6 @@ const Filler = styled.div`
 
   width: 100vw;
   height: 60px;
-  background-color: #ffffff;
 `;
 
 const Navbar: React.FC<NavbarProps> = ({ selected }) => {
