@@ -18,12 +18,14 @@ interface BaseButtonProps {
   loading: boolean;
   onClick?: () => void;
   colorScheme: ColorScheme;
+  buttonWidth?: string;
 }
 
 interface ButtonContainerProps {
   disabled: boolean;
   loading: number;
   colorScheme: ColorScheme;
+  buttonWidth?: string;
 }
 
 const ButtonContainer = styled.div<ButtonContainerProps>`
@@ -53,6 +55,8 @@ const ButtonContainer = styled.div<ButtonContainerProps>`
 
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px,
       rgba(255, 255, 255, 0.5) -3px -3px 6px 1px;
+
+    width: ${(props) => props.buttonWidth || 'auto'};
   }
 `;
 
@@ -71,7 +75,10 @@ const BaseButton: React.FC<BaseButtonProps> = ({
   loading,
   onClick,
   colorScheme,
+  buttonWidth,
 }) => {
+  console.log(buttonWidth);
+
   return (
     <ButtonContainer
       disabled={disabled}
@@ -80,6 +87,7 @@ const BaseButton: React.FC<BaseButtonProps> = ({
       // https://maximeblanc.fr/blog/how-to-fix-the-received-true-for-a-non-boolean-attribute-error
       loading={+loading}
       colorScheme={colorScheme}
+      buttonWidth={buttonWidth}
     >
       <motion.div
         whileHover={{

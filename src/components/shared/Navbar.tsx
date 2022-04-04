@@ -109,6 +109,7 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
         <NavRight>
           <SecondaryButton
             buttonText="Sign out"
+            buttonWidth="110px"
             disabled={false}
             loading={buttonIsLoadingValue}
             onClick={onClick}

@@ -83,6 +83,7 @@ const SignIn: React.FC = () => {
           disabled={disabled}
           submitting={submittingValue}
           buttonText="Sign in"
+          buttonWidth="100px"
         >
           <ValidatedBaseInput
             label="Email"

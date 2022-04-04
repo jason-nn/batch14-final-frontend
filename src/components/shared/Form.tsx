@@ -9,6 +9,7 @@ interface FormProps {
   disabled: boolean;
   submitting: boolean;
   buttonText: string;
+  buttonWidth?: string;
 }
 
 const FormContainer = styled.form`
@@ -35,6 +36,7 @@ const Form: React.FC<FormProps> = ({
   disabled,
   submitting,
   buttonText,
+  buttonWidth,
   children,
 }) => {
   return (
@@ -55,6 +57,7 @@ const Form: React.FC<FormProps> = ({
           buttonText={buttonText}
           disabled={disabled}
           loading={submitting}
+          buttonWidth={buttonWidth}
         />
       </ButtonContainer>
     </FormContainer>

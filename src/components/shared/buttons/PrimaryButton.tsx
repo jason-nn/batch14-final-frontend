@@ -7,6 +7,7 @@ interface PrimaryButtonProps {
   disabled: boolean;
   loading: boolean;
   onClick?: () => void;
+  buttonWidth?: string;
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
@@ -14,6 +15,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   disabled,
   loading,
   onClick,
+  buttonWidth,
 }) => {
   return (
     <BaseButton
@@ -29,6 +31,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
         disabledBackground: '#A3A3A3',
         disabledBorder: '#A3A3A3',
       }}
+      buttonWidth={buttonWidth}
     />
   );
 };

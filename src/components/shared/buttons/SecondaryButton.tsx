@@ -7,6 +7,7 @@ interface SecondaryButtonProps {
   disabled: boolean;
   loading: boolean;
   onClick?: () => void;
+  buttonWidth?: string;
 }
 
 const SecondaryButton: React.FC<SecondaryButtonProps> = ({
@@ -14,6 +15,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
   disabled,
   loading,
   onClick,
+  buttonWidth,
 }) => {
   return (
     <BaseButton
@@ -29,6 +31,7 @@ const SecondaryButton: React.FC<SecondaryButtonProps> = ({
         disabledBackground: '#FFFFFF',
         disabledBorder: '#A3A3A3',
       }}
+      buttonWidth={buttonWidth}
     />
   );
 };
