@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { motion } from 'framer-motion';
 
 interface ColorScheme {
   activeText: string;
@@ -49,12 +50,6 @@ const ButtonContainer = styled.div<ButtonContainerProps>`
 
     cursor: ${(props) =>
       props.disabled || props.loading ? 'not-allowed' : 'pointer'};
-    transition: 250ms ease-in-out;
-  }
-
-  button:hover {
-    transform: ${(props) =>
-      props.disabled || props.loading ? 'scale(1.0)' : 'scale(1.1)'};
   }
 `;
 
@@ -83,21 +78,27 @@ const BaseButton: React.FC<BaseButtonProps> = ({
       loading={+loading}
       colorScheme={colorScheme}
     >
-      <button
-        onClick={() => {
-          if (!disabled && !loading && onClick) {
-            onClick();
-          }
+      <motion.div
+        whileHover={{
+          scale: disabled || loading ? 1.0 : 1.1,
         }}
       >
-        {loading ? (
-          <LoaderContainer>
-            <ClipLoader size={19} color="white" />
-          </LoaderContainer>
-        ) : (
-          <span>{buttonText}</span>
-        )}
-      </button>
+        <button
+          onClick={() => {
+            if (!disabled && !loading && onClick) {
+              onClick();
+            }
+          }}
+        >
+          {loading ? (
+            <LoaderContainer>
+              <ClipLoader size={19} color="white" />
+            </LoaderContainer>
+          ) : (
+            <span>{buttonText}</span>
+          )}
+        </button>
+      </motion.div>
     </ButtonContainer>
   );
 };
