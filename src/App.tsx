@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import UserContextProvider from 'components/shared/UserContextProvider';
+import ToastProvider from 'components/shared/toasts/ToastProvider';
 
 import Alerts from 'pages/Alerts';
 import Home from 'pages/Home';
@@ -19,15 +20,17 @@ const App: React.FC = () => {
 
   return (
     <UserContextProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/purchases" element={<Purchases />} />
-          <Route path="/alerts" element={<Alerts />} />
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
-        </Routes>
-      </BrowserRouter>
+      <ToastProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/purchases" element={<Purchases />} />
+            <Route path="/alerts" element={<Alerts />} />
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
+          </Routes>
+        </BrowserRouter>
+      </ToastProvider>
     </UserContextProvider>
   );
 };
