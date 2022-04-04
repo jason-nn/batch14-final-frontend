@@ -2,16 +2,16 @@ import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
-import hodlr from 'services/hodlr';
-
-import AuthOuterContainer from 'components/auth/AuthOuterContainer';
-import AuthInnerContainer from 'components/auth/AuthInnerContainer';
-import AuthHeader from 'components/auth/AuthHeader';
 import AuthFooter from 'components/auth/AuthFooter';
+import AuthHeader from 'components/auth/AuthHeader';
+import AuthInnerContainer from 'components/auth/AuthInnerContainer';
+import AuthOuterContainer from 'components/auth/AuthOuterContainer';
 
 import Form from 'components/shared/Form';
 import { UserContext } from 'components/shared/UserContextProvider';
 import ValidatedBaseInput from 'components/shared/inputs/ValidatedBaseInput';
+
+import hodlr from 'services/hodlr';
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();

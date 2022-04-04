@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import ClipLoader from 'react-spinners/ClipLoader';
 import { motion } from 'framer-motion';
+import React from 'react';
+import ClipLoader from 'react-spinners/ClipLoader';
+import styled from 'styled-components';
 
 interface ColorScheme {
   activeText: string;

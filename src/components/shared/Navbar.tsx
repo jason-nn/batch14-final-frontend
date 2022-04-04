@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Logo from 'components/shared/Logo';
-import SecondaryButton from 'components/shared/buttons/SecondaryButton';
 import { UserContext } from 'components/shared/UserContextProvider';
+import SecondaryButton from 'components/shared/buttons/SecondaryButton';
 
 const NavbarContainer = styled.div`
   width: 100vw;

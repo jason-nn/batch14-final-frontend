@@ -1,7 +1,7 @@
 import React from 'react';
 
-import SignedIn from 'components/shared/SignedIn';
 import Navbar from 'components/shared/Navbar';
+import SignedIn from 'components/shared/SignedIn';
 
 const Home: React.FC = () => {
   return (

@@ -1,14 +1,14 @@
-import React from 'react';
 import axios from 'axios';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import UserContextProvider from 'components/shared/UserContextProvider';
+
+import Alerts from 'pages/Alerts';
 import Home from 'pages/Home';
 import Purchases from 'pages/Purchases';
-import Alerts from 'pages/Alerts';
 import SignIn from 'pages/SignIn';
 import SignUp from 'pages/SignUp';
-
-import UserContextProvider from 'components/shared/UserContextProvider';
 
 const App: React.FC = () => {
   // dev

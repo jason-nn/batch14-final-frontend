@@ -1,7 +1,7 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState, useEffect, useCallback } from 'react';
 import styled from 'styled-components';
 import { z } from 'zod';
-import { motion, AnimatePresence } from 'framer-motion';
 
 import BaseInput, { BaseInputProps } from 'components/shared/inputs/BaseInput';
 
