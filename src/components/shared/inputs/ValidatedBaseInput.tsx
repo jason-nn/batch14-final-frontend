@@ -34,14 +34,14 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
   validators,
   watch,
 }) => {
-  const [error, setError] = useState<String>('');
+  const [error, setError] = useState<string | null>(null);
 
   const validate = useCallback(
     (value: string) => {
       const zod = validators.safeParse(value);
       if (zod.success) {
         setIsValid(true);
-        setError('');
+        setError(null);
       } else {
         setIsValid(false);
         setError(zod.error.issues[0].message);
@@ -69,7 +69,7 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
         }}
       />
       <AnimatePresence>
-        {error.length ? (
+        {error ? (
           <motion.div
             key={`${label
               .toLowerCase()
