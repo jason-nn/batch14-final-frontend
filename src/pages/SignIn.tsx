@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
 import hodlr from 'services/hodlr';
@@ -10,9 +10,13 @@ import AuthHeader from 'components/auth/AuthHeader';
 import AuthFooter from 'components/auth/AuthFooter';
 
 import Form from 'components/shared/Form';
+import { UserContext } from 'components/shared/UserContextProvider';
 import ValidatedBaseInput from 'components/shared/inputs/ValidatedBaseInput';
 
 const SignIn: React.FC = () => {
+  const navigate = useNavigate();
+  const { userDispatch } = useContext(UserContext);
+
   const [submittingValue, setSubmittingValue] = useState<boolean>(false);
 
   const [emailValue, setEmailValue] = useState<string>('');
@@ -28,13 +32,28 @@ const SignIn: React.FC = () => {
       .signIn({ email: emailValue, password: passwordValue })
       .then((response) => {
         console.log(response);
-        setSubmittingValue(false);
+        if (userDispatch) {
+          userDispatch({
+            type: 'SIGNIN',
+            payload: {
+              email: response.data.user_email,
+              token: response.data.token,
+              id: response.data.user_id,
+            },
+          });
+          setSubmittingValue(false);
+          navigate('/', { replace: true });
+        } else {
+          setSubmittingValue(false);
+          // set error here
+        }
       })
       .catch((error) => {
         console.log(error);
         setSubmittingValue(false);
+        // set invalid username or password error here
       });
-  }, [emailValue, passwordValue]);
+  }, [emailValue, passwordValue, userDispatch, navigate]);
 
   const disabled = useMemo(
     () => !(isEmailValueValid && isPasswordValueValid),

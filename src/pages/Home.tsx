@@ -1,7 +1,12 @@
 import React from 'react';
+import SignedIn from 'components/shared/SignedIn';
 
 const Home: React.FC = () => {
-  return <div>Home</div>;
+  return (
+    <SignedIn>
+      <div>Home</div>
+    </SignedIn>
+  );
 };
 
 export default Home;

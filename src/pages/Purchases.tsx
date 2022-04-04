@@ -1,7 +1,12 @@
 import React from 'react';
+import SignedIn from 'components/shared/SignedIn';
 
 const Purchases: React.FC = () => {
-  return <div>Purchases</div>;
+  return (
+    <SignedIn>
+      <div>Purchases</div>
+    </SignedIn>
+  );
 };
 
 export default Purchases;
