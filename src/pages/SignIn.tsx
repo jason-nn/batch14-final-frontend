@@ -104,8 +104,7 @@ const SignIn: React.FC = () => {
             setIsValid={setIsPasswordValueValid}
             validators={z
               .string()
-              .min(1, { message: 'This field is required' })
-              .min(8, { message: 'Must be at least 8 characters' })}
+              .min(1, { message: 'This field is required' })}
           />
         </Form>
 

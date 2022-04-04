@@ -48,9 +48,9 @@ const BaseToast: React.FC<BaseToastProps> = ({ message, colorScheme }) => {
         {message ? (
           <motion.div
             key={`${message.toLowerCase().split(' ').join('-')}-toast`}
-            initial={{ opacity: 0, y: '50vh' }}
+            initial={{ opacity: 0, y: '100vh' }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: '50vh' }}
+            exit={{ opacity: 0, y: '100vh' }}
             transition={{ duration: 0.5 }}
           >
             <BaseToastInnerContainer colorScheme={colorScheme}>
