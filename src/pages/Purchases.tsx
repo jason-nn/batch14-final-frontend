@@ -6,7 +6,7 @@ import SignedIn from 'components/shared/SignedIn';
 const Purchases: React.FC = () => {
   return (
     <SignedIn>
-      <Navbar />
+      <Navbar selected="purchases" />
       <div>Purchases</div>
     </SignedIn>
   );

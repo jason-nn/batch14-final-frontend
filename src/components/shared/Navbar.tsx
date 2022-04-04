@@ -7,6 +7,10 @@ import Logo from 'components/shared/Logo';
 import { UserContext } from 'components/shared/UserContextProvider';
 import SecondaryButton from 'components/shared/buttons/SecondaryButton';
 
+interface NavbarProps {
+  selected: 'home' | 'purchases' | 'alerts';
+}
+
 const NavbarContainer = styled.div`
   width: 100vw;
   height: 60px;
@@ -52,7 +56,7 @@ const Filler = styled.div`
   background-color: #ffffff;
 `;
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<NavbarProps> = ({ selected }) => {
   const { userDispatch } = useContext(UserContext);
 
   const [buttonIsLoadingValue, setbuttonIsLoadingValue] = useState(false);
@@ -76,13 +80,25 @@ const Navbar: React.FC = () => {
           <NavLink to="/">
             <Logo scale={30} />
           </NavLink>
-          <motion.div whileHover={{ scale: 1.1 }}>
+          <motion.div
+            initial={{ scale: selected === 'home' ? 1.1 : 1.0 }}
+            animate={{ scale: 1.0 }}
+            whileHover={{ scale: 1.1 }}
+          >
             <NavLink to="/">Home</NavLink>
           </motion.div>
-          <motion.div whileHover={{ scale: 1.1 }}>
+          <motion.div
+            initial={{ scale: selected === 'purchases' ? 1.1 : 1.0 }}
+            animate={{ scale: 1.0 }}
+            whileHover={{ scale: 1.1 }}
+          >
             <NavLink to="/purchases">Purchases</NavLink>
           </motion.div>
-          <motion.div whileHover={{ scale: 1.1 }}>
+          <motion.div
+            initial={{ scale: selected === 'alerts' ? 1.1 : 1.0 }}
+            animate={{ scale: 1.0 }}
+            whileHover={{ scale: 1.1 }}
+          >
             <NavLink to="/alerts">Alerts</NavLink>
           </motion.div>
         </NavLeft>
