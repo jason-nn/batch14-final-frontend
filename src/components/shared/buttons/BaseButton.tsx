@@ -77,8 +77,6 @@ const BaseButton: React.FC<BaseButtonProps> = ({
   colorScheme,
   buttonWidth,
 }) => {
-  console.log(buttonWidth);
-
   return (
     <ButtonContainer
       disabled={disabled}
