@@ -92,7 +92,7 @@ const BaseButton: React.FC<BaseButtonProps> = ({
         >
           {loading ? (
             <LoaderContainer>
-              <ClipLoader size={19} color="white" />
+              <ClipLoader size={19} color={colorScheme.activeText} />
             </LoaderContainer>
           ) : (
             <span>{buttonText}</span>

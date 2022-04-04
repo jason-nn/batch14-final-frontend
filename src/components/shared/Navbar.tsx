@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -55,11 +55,17 @@ const Filler = styled.div`
 const Navbar: React.FC = () => {
   const { userDispatch } = useContext(UserContext);
 
+  const [buttonIsLoadingValue, setbuttonIsLoadingValue] = useState(false);
+
   const onClick = () => {
     if (userDispatch) {
-      userDispatch({
-        type: 'SIGNOUT',
-      });
+      setbuttonIsLoadingValue(true);
+      setTimeout(() => {
+        setbuttonIsLoadingValue(false);
+        userDispatch({
+          type: 'SIGNOUT',
+        });
+      }, 1000);
     }
   };
 
@@ -84,7 +90,7 @@ const Navbar: React.FC = () => {
           <SecondaryButton
             buttonText="Sign out"
             disabled={false}
-            loading={false}
+            loading={buttonIsLoadingValue}
             onClick={onClick}
           />
         </NavRight>
