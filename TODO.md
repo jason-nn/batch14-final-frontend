@@ -9,7 +9,7 @@
 - [x] add signed in component to reroute user if not signed in
 - [x] add calls to backend sign in and sign up
 - [x] save user state to local storage
-- [ ] add sign in logic on sign up
+- [x] add sign in logic on sign up
 - [ ] change initial state on other components to null instead of empty string
 
 - [ ] add notification and error components
