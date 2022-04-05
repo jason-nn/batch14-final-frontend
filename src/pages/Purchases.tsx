@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
@@ -22,28 +23,32 @@ const Purchases: React.FC = () => {
   return (
     <SignedIn>
       <Navbar selected="purchases" />
-      <BodyContainer>
-        <SpaceBetween>
-          <Header>Purchases</Header>
-          <PrimaryButton
-            buttonText="New purchase"
-            disabled={false}
-            loading={false}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <BodyContainer>
+          <SpaceBetween>
+            <Header>Purchases</Header>
+            <PrimaryButton
+              buttonText="New purchase"
+              disabled={false}
+              loading={false}
+            />
+          </SpaceBetween>
+          <BaseInput
+            label="Search Crypto"
+            showLabel={false}
+            type="text"
+            value={searchValue}
+            setValue={setSearchValue}
+            placeholder="Search by crypto"
+            backgroundColor="#FFFFFF"
           />
-        </SpaceBetween>
-
-        <BaseInput
-          label="Search Crypto"
-          showLabel={false}
-          type="text"
-          value={searchValue}
-          setValue={setSearchValue}
-          placeholder="Search by crypto"
-          backgroundColor="#FFFFFF"
-        />
-
-        <PurchaseTable />
-      </BodyContainer>
+          <PurchaseTable />
+        </BodyContainer>
+      </motion.div>
     </SignedIn>
   );
 };
