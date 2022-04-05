@@ -26,6 +26,7 @@ const Error = styled.div`
 
 const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
   label,
+  showLabel,
   type,
   placeholder,
   value,
@@ -33,6 +34,7 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
   setIsValid,
   validators,
   watch,
+  backgroundColor,
 }) => {
   const [error, setError] = useState<string | null>(null);
 
@@ -60,6 +62,7 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
     <ValidatedBaseInputContainer>
       <BaseInput
         label={label}
+        showLabel={showLabel}
         type={type}
         placeholder={placeholder}
         value={value}
@@ -67,6 +70,7 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
         onChange={(value) => {
           validate(value);
         }}
+        backgroundColor={backgroundColor}
       />
       <AnimatePresence>
         {error ? (

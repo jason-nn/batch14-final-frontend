@@ -3,14 +3,20 @@ import styled from 'styled-components';
 
 interface BaseInputProps {
   label: string;
+  showLabel?: boolean;
   type: 'text' | 'number' | 'password';
   placeholder?: string;
   value: string;
   setValue: React.Dispatch<string>;
   onChange?: (value: string) => void;
+  backgroundColor?: string;
 }
 
-const BaseInputContainer = styled.div`
+interface BaseInputContainerProps {
+  backgroundColor: string | undefined;
+}
+
+const BaseInputContainer = styled.div<BaseInputContainerProps>`
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -23,7 +29,8 @@ const BaseInputContainer = styled.div`
   }
 
   input {
-    background-color: #f4f6f8;
+    background-color: ${(props) =>
+      props.backgroundColor ? props.backgroundColor : '#f4f6f8'};
     border-radius: 0px 16px;
     padding: 10px 30px;
     border: none;
@@ -42,15 +49,17 @@ const BaseInputContainer = styled.div`
 
 const BaseInput: React.FC<BaseInputProps> = ({
   label,
+  showLabel,
   type,
   placeholder,
   value,
   setValue,
+  backgroundColor,
   onChange,
 }) => {
   return (
-    <BaseInputContainer>
-      <label>{label}</label>
+    <BaseInputContainer backgroundColor={backgroundColor}>
+      {showLabel ? <label>{label}</label> : null}
       <input
         type={type}
         placeholder={placeholder}
