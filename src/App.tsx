@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PurchaseContextProvider from 'components/purchases/PurchaseContextProvider';
 
 import UserContextProvider from 'components/shared/UserContextProvider';
-import ToastProvider from 'components/shared/toasts/ToastProvider';
+import ToastContextProvider from 'components/shared/toasts/ToastContextProvider';
 
 import Alerts from 'pages/Alerts';
 import Home from 'pages/Home';
@@ -23,7 +23,7 @@ const App: React.FC = () => {
   return (
     <UserContextProvider>
       <PurchaseContextProvider>
-        <ToastProvider>
+        <ToastContextProvider>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -33,7 +33,7 @@ const App: React.FC = () => {
               <Route path="/sign-up" element={<SignUp />} />
             </Routes>
           </BrowserRouter>
-        </ToastProvider>
+        </ToastContextProvider>
       </PurchaseContextProvider>
     </UserContextProvider>
   );

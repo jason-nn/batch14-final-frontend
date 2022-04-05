@@ -12,7 +12,7 @@ const ToastContext = React.createContext<{
   toastDispatch: React.Dispatch<ToastDispatch> | null;
 }>({ toastDispatch: null });
 
-const ToastProvider: React.FC = ({ children }) => {
+const ToastContextProvider: React.FC = ({ children }) => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -54,5 +54,5 @@ const ToastProvider: React.FC = ({ children }) => {
   );
 };
 
-export default ToastProvider;
+export default ToastContextProvider;
 export { ToastContext };

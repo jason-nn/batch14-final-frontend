@@ -10,7 +10,7 @@ import AuthOuterContainer from 'components/auth/AuthOuterContainer';
 import Form from 'components/shared/Form';
 import { UserContext } from 'components/shared/UserContextProvider';
 import ValidatedBaseInput from 'components/shared/inputs/ValidatedBaseInput';
-import { ToastContext } from 'components/shared/toasts/ToastProvider';
+import { ToastContext } from 'components/shared/toasts/ToastContextProvider';
 
 import hodlr from 'services/hodlr';
 

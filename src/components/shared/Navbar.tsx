@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Logo from 'components/shared/Logo';
 import { UserContext } from 'components/shared/UserContextProvider';
 import SecondaryButton from 'components/shared/buttons/SecondaryButton';
-import { ToastContext } from 'components/shared/toasts/ToastProvider';
+import { ToastContext } from 'components/shared/toasts/ToastContextProvider';
 
 interface NavbarProps {
   selected: 'home' | 'purchases' | 'alerts';
