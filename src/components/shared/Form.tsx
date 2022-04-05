@@ -45,9 +45,7 @@ const Form: React.FC<FormProps> = ({
       }}
     >
       <Header>{header}</Header>
-
       {children}
-
       <ButtonContainer>
         <PrimaryButton
           buttonText={buttonText}
