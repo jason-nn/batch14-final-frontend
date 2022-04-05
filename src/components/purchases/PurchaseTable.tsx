@@ -32,6 +32,16 @@ const PurchaseHeaders = styled.div`
   font-size: 10px;
 `;
 
+const Empty = styled.div`
+  font-family: CircularStd-Bold;
+  font-size: 20px;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 20px;
+`;
+
 const PurchaseTable: React.FC<PurchaseTableProps> = ({ filter }) => {
   const { userPurchases } = useContext(PurchaseContext);
 
@@ -45,19 +55,25 @@ const PurchaseTable: React.FC<PurchaseTableProps> = ({ filter }) => {
 
   return (
     <PurchaseTableContainer>
-      <PurchaseHeaders>
-        <div>Cryptocurrency</div>
-        <div>Price at Time of Purchase</div>
-        <div>Quantity Purchased</div>
-      </PurchaseHeaders>
-      {filteredUserPurchases.map((purchase, key) => (
-        <PurchaseRow
-          key={key}
-          cryptocurrency={purchase.cryptocurrency.symbol}
-          price={purchase.price}
-          quantity={purchase.quantity}
-        />
-      ))}
+      {filteredUserPurchases.length > 0 ? (
+        <>
+          <PurchaseHeaders>
+            <div>Cryptocurrency</div>
+            <div>Price at Time of Purchase</div>
+            <div>Quantity Purchased</div>
+          </PurchaseHeaders>
+          {filteredUserPurchases.map((purchase, key) => (
+            <PurchaseRow
+              key={key}
+              cryptocurrency={purchase.cryptocurrency.symbol}
+              price={purchase.price}
+              quantity={purchase.quantity}
+            />
+          ))}
+        </>
+      ) : (
+        <Empty>There's nothing here</Empty>
+      )}
     </PurchaseTableContainer>
   );
 };
