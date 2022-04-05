@@ -33,7 +33,7 @@ const BaseToastInnerContainer = styled.div<BaseToastInnerContainerProps>`
 
   span {
     color: ${(props) => props.colorScheme.text};
-    font-size: 17px;
+    font-size: 15px;
     font-family: CircularStd-Bold;
   }
 
