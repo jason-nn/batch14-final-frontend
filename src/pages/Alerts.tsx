@@ -22,9 +22,9 @@ const Alerts: React.FC = () => {
       <Navbar selected="alerts" />
       <BodyContainer>
         <SpaceBetween>
-          <Header>Alerts</Header>
+          <Header>Price Alerts</Header>
           <PrimaryButton
-            buttonText="New alert"
+            buttonText="New price alert"
             disabled={false}
             loading={false}
           />

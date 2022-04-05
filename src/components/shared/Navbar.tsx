@@ -103,7 +103,7 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
             animate={{ scale: 1.0 }}
             whileHover={{ scale: 1.1 }}
           >
-            <NavLink to="/alerts">Alerts</NavLink>
+            <NavLink to="/alerts">Price Alerts</NavLink>
           </motion.div>
         </NavLeft>
         <NavRight>
