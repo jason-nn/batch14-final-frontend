@@ -31,7 +31,7 @@ const ToastProvider: React.FC = ({ children }) => {
         setTimeout(() => {
           setSuccessMessage(null);
           console.log('close');
-        }, 5000)
+        }, 2500)
       );
     }
     if (toastDispatch.type === 'ERROR') {
@@ -42,7 +42,7 @@ const ToastProvider: React.FC = ({ children }) => {
         setTimeout(() => {
           setErrorMessage(null);
           console.log('close');
-        }, 5000)
+        }, 2500)
       );
     }
   };
