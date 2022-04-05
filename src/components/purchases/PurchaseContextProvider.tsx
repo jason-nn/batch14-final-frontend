@@ -2,30 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import { UserContext } from 'components/shared/UserContextProvider';
 
+import Purchase from 'schemas/purchase';
+
 import hodlr from 'services/hodlr';
-
-interface Cryptocurrency {
-  id: number;
-  created_at: string;
-  updated_at: string;
-
-  price: number;
-  name: string;
-  symbol: string;
-}
-
-interface Purchase {
-  id: number;
-  created_at: string;
-  updated_at: string;
-
-  price: number;
-  quantity: number;
-  cryptocurrency: Cryptocurrency;
-
-  user_id: number;
-  cryptocurrency_id: number;
-}
 
 const PurchaseContext = React.createContext<{
   userPurchases: Purchase[];
@@ -43,6 +22,7 @@ const PurchaseContextProvider: React.FC = ({ children }) => {
         .purchases(userState.token)
         .then((response) => {
           console.log(response);
+          setUserPurchases(response.data);
         })
         .catch((error) => {
           console.log(error);
