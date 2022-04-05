@@ -15,6 +15,8 @@ import Purchases from 'pages/Purchases';
 import SignIn from 'pages/SignIn';
 import SignUp from 'pages/SignUp';
 
+import features from 'utils/features';
+
 const App: React.FC = () => {
   // dev
   axios.defaults.baseURL = 'http://localhost:4000';
@@ -31,7 +33,9 @@ const App: React.FC = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/purchases" element={<Purchases />} />
-                <Route path="/alerts" element={<Alerts />} />
+                {features.alerts ? (
+                  <Route path="/alerts" element={<Alerts />} />
+                ) : null}
                 <Route path="/sign-in" element={<SignIn />} />
                 <Route path="/sign-up" element={<SignUp />} />
               </Routes>

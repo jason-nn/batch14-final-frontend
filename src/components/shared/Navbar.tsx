@@ -8,6 +8,8 @@ import { UserContext } from 'components/shared/UserContextProvider';
 import SecondaryButton from 'components/shared/buttons/SecondaryButton';
 import { ToastContext } from 'components/shared/toasts/ToastContextProvider';
 
+import features from 'utils/features';
+
 interface NavbarProps {
   selected: 'home' | 'purchases' | 'alerts';
 }
@@ -98,13 +100,15 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
           >
             <NavLink to="/purchases">Purchases</NavLink>
           </motion.div>
-          <motion.div
-            initial={{ scale: selected === 'alerts' ? 1.1 : 1.0 }}
-            animate={{ scale: 1.0 }}
-            whileHover={{ scale: 1.1 }}
-          >
-            <NavLink to="/alerts">Price Alerts</NavLink>
-          </motion.div>
+          {features.alerts ? (
+            <motion.div
+              initial={{ scale: selected === 'alerts' ? 1.1 : 1.0 }}
+              animate={{ scale: 1.0 }}
+              whileHover={{ scale: 1.1 }}
+            >
+              <NavLink to="/alerts">Price Alerts</NavLink>
+            </motion.div>
+          ) : null}
         </NavLeft>
         <NavRight>
           <SecondaryButton
