@@ -2,6 +2,8 @@ import axios from 'axios';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import PurchaseContextProvider from 'components/purchases/PurchaseContextProvider';
+
 import UserContextProvider from 'components/shared/UserContextProvider';
 import ToastProvider from 'components/shared/toasts/ToastProvider';
 
@@ -20,17 +22,19 @@ const App: React.FC = () => {
 
   return (
     <UserContextProvider>
-      <ToastProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/purchases" element={<Purchases />} />
-            <Route path="/alerts" element={<Alerts />} />
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/sign-up" element={<SignUp />} />
-          </Routes>
-        </BrowserRouter>
-      </ToastProvider>
+      <PurchaseContextProvider>
+        <ToastProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/purchases" element={<Purchases />} />
+              <Route path="/alerts" element={<Alerts />} />
+              <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/sign-up" element={<SignUp />} />
+            </Routes>
+          </BrowserRouter>
+        </ToastProvider>
+      </PurchaseContextProvider>
     </UserContextProvider>
   );
 };
