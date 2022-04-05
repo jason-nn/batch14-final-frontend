@@ -8,9 +8,10 @@ import Navbar from 'components/shared/Navbar';
 import SignedIn from 'components/shared/SignedIn';
 import PrimaryButton from 'components/shared/buttons/PrimaryButton';
 
-const AlignRight = styled.div`
+const SpaceBetween = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: flex-end;
 `;
 
 const Home: React.FC = () => {
@@ -23,15 +24,15 @@ const Home: React.FC = () => {
         transition={{ duration: 0.5 }}
       >
         <BodyContainer>
-          <Header>DCA and Current Price</Header>
-          <Header>Portfolio</Header>
-          <AlignRight>
+          <SpaceBetween>
+            <Header>DCA and Current Prices</Header>
             <PrimaryButton
               buttonText="New purchase"
               disabled={false}
               loading={false}
             />
-          </AlignRight>
+          </SpaceBetween>
+          <Header>Portfolio</Header>
         </BodyContainer>
       </motion.div>
     </SignedIn>
