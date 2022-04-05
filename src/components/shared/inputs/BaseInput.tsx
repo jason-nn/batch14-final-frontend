@@ -49,7 +49,7 @@ const BaseInputContainer = styled.div<BaseInputContainerProps>`
 
 const BaseInput: React.FC<BaseInputProps> = ({
   label,
-  showLabel,
+  showLabel = true,
   type,
   placeholder,
   value,
