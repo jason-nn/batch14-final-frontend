@@ -13,7 +13,7 @@ const SuccessToast: React.FC<SuccessToastProps> = ({ message }) => {
       colorScheme={{
         text: '#10B981',
         background: '#D1FAE5',
-        border: '#10B981',
+        border: '#D1FAE5',
       }}
     />
   );

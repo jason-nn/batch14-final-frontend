@@ -13,7 +13,7 @@ const ErrorToast: React.FC<ErrorToastProps> = ({ message }) => {
       colorScheme={{
         text: '#EF4444',
         background: '#FEE2E2',
-        border: '#EF4444',
+        border: '#FEE2E2',
       }}
     />
   );
