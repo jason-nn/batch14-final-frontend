@@ -46,7 +46,7 @@ const Purchases: React.FC = () => {
             placeholder="Search by crypto"
             backgroundColor="#FFFFFF"
           />
-          <PurchaseTable />
+          <PurchaseTable filter={searchValue} />
         </BodyContainer>
       </motion.div>
     </SignedIn>

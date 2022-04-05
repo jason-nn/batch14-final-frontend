@@ -1,8 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import styled from 'styled-components';
 
 import { PurchaseContext } from 'components/purchases/PurchaseContextProvider';
 import PurchaseRow from 'components/purchases/PurchaseRow';
+
+interface PurchaseTableProps {
+  filter: string;
+}
 
 const PurchaseTableContainer = styled.div`
   background: #ffffff;
@@ -28,8 +32,16 @@ const PurchaseHeaders = styled.div`
   font-size: 10px;
 `;
 
-const PurchaseTable: React.FC = () => {
+const PurchaseTable: React.FC<PurchaseTableProps> = ({ filter }) => {
   const { userPurchases } = useContext(PurchaseContext);
+
+  const filteredUserPurchases = useMemo(
+    () =>
+      userPurchases.filter((purchase) =>
+        purchase.cryptocurrency.symbol.includes(filter.toLowerCase())
+      ),
+    [filter, userPurchases]
+  );
 
   return (
     <PurchaseTableContainer>
@@ -38,7 +50,7 @@ const PurchaseTable: React.FC = () => {
         <div>Price at Time of Purchase</div>
         <div>Quantity Purchased</div>
       </PurchaseHeaders>
-      {userPurchases.map((purchase, key) => (
+      {filteredUserPurchases.map((purchase, key) => (
         <PurchaseRow
           key={key}
           cryptocurrency={purchase.cryptocurrency.symbol}
