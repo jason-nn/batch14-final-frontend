@@ -16,20 +16,34 @@ const ToastProvider: React.FC = ({ children }) => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const [currentTimeout, setCurrentTimeout] = useState<NodeJS.Timeout>(
+    setTimeout(() => {
+      return;
+    }, 100)
+  );
+
   const toastDispatch = (toastDispatch: ToastDispatch) => {
     if (toastDispatch.type === 'SUCCESS') {
+      clearTimeout(currentTimeout);
       setErrorMessage(null);
       setSuccessMessage(toastDispatch.message);
-      setTimeout(() => {
-        setSuccessMessage(null);
-      }, 5000);
+      setCurrentTimeout(
+        setTimeout(() => {
+          setSuccessMessage(null);
+          console.log('close');
+        }, 5000)
+      );
     }
     if (toastDispatch.type === 'ERROR') {
+      clearTimeout(currentTimeout);
       setSuccessMessage(null);
       setErrorMessage(toastDispatch.message);
-      setTimeout(() => {
-        setErrorMessage(null);
-      }, 5000);
+      setCurrentTimeout(
+        setTimeout(() => {
+          setErrorMessage(null);
+          console.log('close');
+        }, 5000)
+      );
     }
   };
 
