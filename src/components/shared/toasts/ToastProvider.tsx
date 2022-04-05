@@ -30,7 +30,6 @@ const ToastProvider: React.FC = ({ children }) => {
       setCurrentTimeout(
         setTimeout(() => {
           setSuccessMessage(null);
-          console.log('close');
         }, 2500)
       );
     }
@@ -41,7 +40,6 @@ const ToastProvider: React.FC = ({ children }) => {
       setCurrentTimeout(
         setTimeout(() => {
           setErrorMessage(null);
-          console.log('close');
         }, 2500)
       );
     }
