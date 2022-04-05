@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Header from 'components/shared/Header';
 import PrimaryButton from 'components/shared/buttons/PrimaryButton';
 
 interface FormProps {
@@ -18,11 +19,6 @@ const FormContainer = styled.form`
   gap: 20px;
 
   width: 100%;
-`;
-
-const Header = styled.div`
-  font-family: CircularStd-Black;
-  font-size: 25px;
 `;
 
 const ButtonContainer = styled.div`
