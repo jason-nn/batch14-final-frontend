@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion';
 import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Logo from 'components/shared/Logo';
+import NavItem from 'components/shared/NavItem';
 import { UserContext } from 'components/shared/UserContextProvider';
 import SecondaryButton from 'components/shared/buttons/SecondaryButton';
 import { ToastContext } from 'components/shared/toasts/ToastContextProvider';
@@ -86,28 +86,25 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
           <NavLink to="/">
             <Logo scale={30} />
           </NavLink>
-          <motion.div
-            initial={{ scale: selected === 'home' ? 1.1 : 1.0 }}
-            animate={{ scale: 1.0 }}
-            whileHover={{ scale: 1.1 }}
-          >
-            <NavLink to="/">Home</NavLink>
-          </motion.div>
-          <motion.div
-            initial={{ scale: selected === 'purchases' ? 1.1 : 1.0 }}
-            animate={{ scale: 1.0 }}
-            whileHover={{ scale: 1.1 }}
-          >
-            <NavLink to="/purchases">Purchases</NavLink>
-          </motion.div>
+          <NavItem
+            selected={selected}
+            matchSelectedTo="home"
+            route="/"
+            text="Home"
+          />
+          <NavItem
+            selected={selected}
+            matchSelectedTo="purchases"
+            route="/purchases"
+            text="Purchases"
+          />
           {features.alerts ? (
-            <motion.div
-              initial={{ scale: selected === 'alerts' ? 1.1 : 1.0 }}
-              animate={{ scale: 1.0 }}
-              whileHover={{ scale: 1.1 }}
-            >
-              <NavLink to="/alerts">Price Alerts</NavLink>
-            </motion.div>
+            <NavItem
+              selected={selected}
+              matchSelectedTo="alerts"
+              route="/alerts"
+              text="Price Alerts"
+            />
           ) : null}
         </NavLeft>
         <NavRight>
