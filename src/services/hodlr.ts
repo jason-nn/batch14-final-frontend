@@ -5,13 +5,13 @@ interface User {
   password: string;
 }
 
-interface Purchase {
+interface HodlrPurchase {
   cryptocurrencyId: number;
   price: number;
   quantity: number;
 }
 
-interface Alert {
+interface HodlrAlert {
   cryptocurrencyId: number;
   price: number;
   operator: 'higher' | 'lower';
@@ -83,7 +83,7 @@ const hodlr = {
     });
   },
 
-  createPurchase: (token: string, purchase: Purchase) => {
+  createPurchase: (token: string, purchase: HodlrPurchase) => {
     return axios({
       method: 'post',
       url: `api/v1/purchases`,
@@ -112,7 +112,7 @@ const hodlr = {
     });
   },
 
-  createAlert: (token: string, alert: Alert) => {
+  createAlert: (token: string, alert: HodlrAlert) => {
     return axios({
       method: 'post',
       url: `api/v1/alerts`,
