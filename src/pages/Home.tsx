@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import styled from 'styled-components';
 
+import DollarCostAverageTable from 'components/home/DollarCostAverageTable';
+
 import BodyContainer from 'components/shared/BodyContainer';
 import Header from 'components/shared/Header';
 import Navbar from 'components/shared/Navbar';
@@ -25,13 +27,14 @@ const Home: React.FC = () => {
       >
         <BodyContainer>
           <SpaceBetween>
-            <Header>DCA and Current Prices</Header>
+            <Header>Dollar Cost Average</Header>
             <PrimaryButton
               buttonText="New purchase"
               disabled={false}
               loading={false}
             />
           </SpaceBetween>
+          <DollarCostAverageTable />
           <Header>Portfolio</Header>
         </BodyContainer>
       </motion.div>

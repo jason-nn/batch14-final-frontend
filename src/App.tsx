@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import AlertContextProvider from 'components/alerts/AlertContextProvider';
 
+import PortfolioContextProvider from 'components/home/PortfolioContextProvider';
+
 import PurchaseContextProvider from 'components/purchases/PurchaseContextProvider';
 
 import UserContextProvider from 'components/shared/UserContextProvider';
@@ -29,17 +31,19 @@ const App: React.FC = () => {
       <PurchaseContextProvider>
         <AlertContextProvider>
           <ToastContextProvider>
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/purchases" element={<Purchases />} />
-                {features.alerts ? (
-                  <Route path="/alerts" element={<Alerts />} />
-                ) : null}
-                <Route path="/sign-in" element={<SignIn />} />
-                <Route path="/sign-up" element={<SignUp />} />
-              </Routes>
-            </BrowserRouter>
+            <PortfolioContextProvider>
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/purchases" element={<Purchases />} />
+                  {features.alerts ? (
+                    <Route path="/alerts" element={<Alerts />} />
+                  ) : null}
+                  <Route path="/sign-in" element={<SignIn />} />
+                  <Route path="/sign-up" element={<SignUp />} />
+                </Routes>
+              </BrowserRouter>
+            </PortfolioContextProvider>
           </ToastContextProvider>
         </AlertContextProvider>
       </PurchaseContextProvider>
