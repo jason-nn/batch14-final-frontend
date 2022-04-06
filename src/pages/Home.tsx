@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import DollarCostAverageTable from 'components/home/DollarCostAverageTable';
+import PortfolioTable from 'components/home/PortfolioTable';
 
 import BodyContainer from 'components/shared/BodyContainer';
 import Header from 'components/shared/Header';
@@ -36,6 +37,7 @@ const Home: React.FC = () => {
           </SpaceBetween>
           <DollarCostAverageTable />
           <Header>Portfolio</Header>
+          <PortfolioTable />
         </BodyContainer>
       </motion.div>
     </SignedIn>

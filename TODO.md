@@ -1,7 +1,7 @@
 # To Do
 
 - [x] add dollar cost average table
-- [ ] add portfolio table
+- [x] add portfolio table
 
 - [ ] add modal for new purchase
 - [ ] add functionality for new purchase modal
