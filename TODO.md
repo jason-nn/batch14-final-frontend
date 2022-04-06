@@ -1,10 +1,6 @@
 # To Do
 
-- [x] implement logic for DCA calculation
-- [x] move out logic for empty to table component
-- [ ] add DCA and current price table
-
-- [ ] implement logic for portfolio calculation
+- [x] add dollar cost average table
 - [ ] add portfolio table
 
 - [ ] add modal for new purchase

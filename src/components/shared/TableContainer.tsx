@@ -17,6 +17,8 @@ const TableContainerContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  text-align: center;
 `;
 
 const Empty = styled.div`
