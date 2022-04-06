@@ -1,5 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+
+import ProfitAndLossContainer from 'components/shared/ProfitAndLossContainer';
+import SpaceBetween from 'components/shared/SpaceBetween';
+import TableRowContainer from 'components/shared/TableRowContainer';
 
 interface DollarCostAverageRowProps {
   symbol: string;
@@ -8,30 +11,6 @@ interface DollarCostAverageRowProps {
   profitAndLoss: number;
 }
 
-interface ProfitAndLossContainerProps {
-  negative: boolean;
-}
-
-const DollarCostAverageRowContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-
-  font-family: CircularStd-Bold;
-  font-size: 14px;
-`;
-
-const ProfitAndLossContainer = styled.div<ProfitAndLossContainerProps>`
-  color: ${(props) => (props.negative ? '#EF4444' : '#34D399')};
-`;
-
-const SpaceBetween = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  width: 50%;
-  margin: 0 auto;
-`;
-
 const DollarCostAverageRow: React.FC<DollarCostAverageRowProps> = ({
   symbol,
   dollarCostAverage,
@@ -39,7 +18,7 @@ const DollarCostAverageRow: React.FC<DollarCostAverageRowProps> = ({
   profitAndLoss,
 }) => {
   return (
-    <DollarCostAverageRowContainer>
+    <TableRowContainer columns={4}>
       <div>{symbol.toUpperCase()}</div>
       <SpaceBetween>
         <span>$</span>
@@ -49,13 +28,13 @@ const DollarCostAverageRow: React.FC<DollarCostAverageRowProps> = ({
         <span>$</span>
         <span>{currentPrice.toFixed(2)}</span>
       </SpaceBetween>
-      <ProfitAndLossContainer negative={profitAndLoss < 0}>
+      <ProfitAndLossContainer value={profitAndLoss}>
         <SpaceBetween>
           <span>{profitAndLoss < 0 ? '-' : '+'}</span>
           <span>{`${Math.abs(profitAndLoss * 100).toFixed(2)}%`}</span>
         </SpaceBetween>
       </ProfitAndLossContainer>
-    </DollarCostAverageRowContainer>
+    </TableRowContainer>
   );
 };
 

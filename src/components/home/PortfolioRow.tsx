@@ -1,5 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+
+import ProfitAndLossContainer from 'components/shared/ProfitAndLossContainer';
+import SpaceBetween from 'components/shared/SpaceBetween';
+import TableRowContainer from 'components/shared/TableRowContainer';
 
 interface PortfolioRowProps {
   symbol: string;
@@ -8,30 +11,6 @@ interface PortfolioRowProps {
   profitAndLoss: number;
 }
 
-interface ProfitAndLossContainerProps {
-  negative: boolean;
-}
-
-const PortfolioRowContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-
-  font-family: CircularStd-Bold;
-  font-size: 14px;
-`;
-
-const ProfitAndLossContainer = styled.div<ProfitAndLossContainerProps>`
-  color: ${(props) => (props.negative ? '#EF4444' : '#34D399')};
-`;
-
-const SpaceBetween = styled.div`
-  display: flex;
-  justify-content: space-between;
-
-  width: 50%;
-  margin: 0 auto;
-`;
-
 const PortfolioRow: React.FC<PortfolioRowProps> = ({
   symbol,
   acquisitionCost,
@@ -39,7 +18,7 @@ const PortfolioRow: React.FC<PortfolioRowProps> = ({
   profitAndLoss,
 }) => {
   return (
-    <PortfolioRowContainer>
+    <TableRowContainer columns={4}>
       <div>{symbol.toUpperCase()}</div>
       <SpaceBetween>
         <span>$</span>
@@ -49,7 +28,7 @@ const PortfolioRow: React.FC<PortfolioRowProps> = ({
         <span>$</span>
         <span>{currentValue.toFixed(2)}</span>
       </SpaceBetween>
-      <ProfitAndLossContainer negative={profitAndLoss < 0}>
+      <ProfitAndLossContainer value={profitAndLoss}>
         <SpaceBetween>
           <span>$</span>
           <span>
@@ -58,7 +37,7 @@ const PortfolioRow: React.FC<PortfolioRowProps> = ({
           </span>
         </SpaceBetween>
       </ProfitAndLossContainer>
-    </PortfolioRowContainer>
+    </TableRowContainer>
   );
 };
 
