@@ -6,5 +6,7 @@ interface Cryptocurrency {
   price: number;
   name: string;
   symbol: string;
+
+  coingecko_id: string;
 }
 export default Cryptocurrency;
