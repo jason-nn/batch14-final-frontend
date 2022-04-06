@@ -36,6 +36,7 @@ const Home: React.FC = () => {
             />
           </SpaceBetween>
           <DollarCostAverageTable />
+          <div />
           <Header>Portfolio</Header>
           <PortfolioTable />
         </BodyContainer>
