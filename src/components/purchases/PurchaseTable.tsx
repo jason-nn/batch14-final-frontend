@@ -4,23 +4,11 @@ import styled from 'styled-components';
 import { PurchaseContext } from 'components/purchases/PurchaseContextProvider';
 import PurchaseRow from 'components/purchases/PurchaseRow';
 
+import TableContainer from 'components/shared/TableContainer';
+
 interface PurchaseTableProps {
   filter: string;
 }
-
-const PurchaseTableContainer = styled.div`
-  background: #ffffff;
-  border-radius: 16px;
-
-  padding: 20px 30px;
-
-  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset,
-    rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
 
 const PurchaseHeaders = styled.div`
   display: grid;
@@ -30,16 +18,6 @@ const PurchaseHeaders = styled.div`
   color: #1d4ed8;
   font-family: CircularStd-Bold;
   font-size: 10px;
-`;
-
-const Empty = styled.div`
-  font-family: CircularStd-Bold;
-  font-size: 20px;
-
-  display: flex;
-  justify-content: center;
-
-  padding: 20px;
 `;
 
 const PurchaseTable: React.FC<PurchaseTableProps> = ({ filter }) => {
@@ -54,27 +32,21 @@ const PurchaseTable: React.FC<PurchaseTableProps> = ({ filter }) => {
   );
 
   return (
-    <PurchaseTableContainer>
-      {filteredUserPurchases.length > 0 ? (
-        <>
-          <PurchaseHeaders>
-            <div>Cryptocurrency Symbol</div>
-            <div>Price at Time of Purchase</div>
-            <div>Quantity Purchased</div>
-          </PurchaseHeaders>
-          {filteredUserPurchases.map((purchase, key) => (
-            <PurchaseRow
-              key={key}
-              cryptocurrency={purchase.cryptocurrency.symbol}
-              price={purchase.price}
-              quantity={purchase.quantity}
-            />
-          ))}
-        </>
-      ) : (
-        <Empty>There's nothing here</Empty>
-      )}
-    </PurchaseTableContainer>
+    <TableContainer isEmpty={filteredUserPurchases.length < 1}>
+      <PurchaseHeaders>
+        <div>Cryptocurrency Symbol</div>
+        <div>Price at Time of Purchase</div>
+        <div>Quantity Purchased</div>
+      </PurchaseHeaders>
+      {filteredUserPurchases.map((purchase, key) => (
+        <PurchaseRow
+          key={key}
+          cryptocurrency={purchase.cryptocurrency.symbol}
+          price={purchase.price}
+          quantity={purchase.quantity}
+        />
+      ))}
+    </TableContainer>
   );
 };
 

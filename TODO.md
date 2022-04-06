@@ -1,7 +1,7 @@
 # To Do
 
 - [x] implement logic for DCA calculation
-- [ ] move out logic for empty to table component
+- [x] move out logic for empty to table component
 - [ ] add DCA and current price table
 
 - [ ] implement logic for portfolio calculation
