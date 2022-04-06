@@ -15,6 +15,14 @@ const PurchaseRowContainer = styled.div`
   font-size: 14px;
 `;
 
+const SpaceBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  width: 50%;
+  margin: 0 auto;
+`;
+
 const PurchaseRow: React.FC<PurchaseRowProps> = ({
   cryptocurrency,
   price,
@@ -23,7 +31,10 @@ const PurchaseRow: React.FC<PurchaseRowProps> = ({
   return (
     <PurchaseRowContainer>
       <div>{cryptocurrency.toUpperCase()}</div>
-      <div>$&nbsp;{price.toFixed(2)}</div>
+      <SpaceBetween>
+        <span>$</span>
+        <span>{price.toFixed(2)}</span>
+      </SpaceBetween>
       <div>{quantity}</div>
     </PurchaseRowContainer>
   );

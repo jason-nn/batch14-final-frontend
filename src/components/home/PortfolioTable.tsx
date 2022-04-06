@@ -22,7 +22,7 @@ const PortfolioTable: React.FC = () => {
   return (
     <TableContainer isEmpty={Object.keys(portfolio).length < 1}>
       <PortfolioHeaders>
-        <div>Cryptocurrency Symbol</div>
+        <div>Cryptocurrency</div>
         <div>Acquisition Cost</div>
         <div>Current Value</div>
         <div>Profit &amp; Loss</div>

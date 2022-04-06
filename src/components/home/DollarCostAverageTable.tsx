@@ -22,7 +22,7 @@ const DollarCostAverageTable: React.FC = () => {
   return (
     <TableContainer isEmpty={Object.keys(portfolio).length < 1}>
       <DollarCostAverageHeaders>
-        <div>Cryptocurrency Symbol</div>
+        <div>Cryptocurrency</div>
         <div>Dollar Cost Average</div>
         <div>Current Market Price</div>
         <div>Profit &amp; Loss</div>

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 interface DollarCostAverageRowProps {
@@ -21,7 +21,15 @@ const DollarCostAverageRowContainer = styled.div`
 `;
 
 const ProfitAndLossContainer = styled.div<ProfitAndLossContainerProps>`
-  color: ${(props) => (props.negative ? '#EF4444' : '#10B981')};
+  color: ${(props) => (props.negative ? '#EF4444' : '#34D399')};
+`;
+
+const SpaceBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  width: 50%;
+  margin: 0 auto;
 `;
 
 const DollarCostAverageRow: React.FC<DollarCostAverageRowProps> = ({
@@ -30,21 +38,22 @@ const DollarCostAverageRow: React.FC<DollarCostAverageRowProps> = ({
   currentPrice,
   profitAndLoss,
 }) => {
-  const formattedProfitAndLoss = useMemo(() => {
-    if (profitAndLoss < 0) {
-      return `- ${Math.abs(profitAndLoss * 100).toFixed(2)}%`;
-    } else {
-      return `+ ${(profitAndLoss * 100).toFixed(2)}%`;
-    }
-  }, [profitAndLoss]);
-
   return (
     <DollarCostAverageRowContainer>
       <div>{symbol.toUpperCase()}</div>
-      <div>$&nbsp;{dollarCostAverage.toFixed(2)}</div>
-      <div>$&nbsp;{currentPrice.toFixed(2)}</div>
+      <SpaceBetween>
+        <span>$</span>
+        <span>{dollarCostAverage.toFixed(2)}</span>
+      </SpaceBetween>
+      <SpaceBetween>
+        <span>$</span>
+        <span>{currentPrice.toFixed(2)}</span>
+      </SpaceBetween>
       <ProfitAndLossContainer negative={profitAndLoss < 0}>
-        {formattedProfitAndLoss}
+        <SpaceBetween>
+          <span>{profitAndLoss < 0 ? '-' : '+'}</span>
+          <span>{`${Math.abs(profitAndLoss * 100).toFixed(2)}%`}</span>
+        </SpaceBetween>
       </ProfitAndLossContainer>
     </DollarCostAverageRowContainer>
   );

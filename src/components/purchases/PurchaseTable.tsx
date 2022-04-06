@@ -34,7 +34,7 @@ const PurchaseTable: React.FC<PurchaseTableProps> = ({ filter }) => {
   return (
     <TableContainer isEmpty={filteredUserPurchases.length < 1}>
       <PurchaseHeaders>
-        <div>Cryptocurrency Symbol</div>
+        <div>Cryptocurrency</div>
         <div>Price at Time of Purchase</div>
         <div>Quantity Purchased</div>
       </PurchaseHeaders>
