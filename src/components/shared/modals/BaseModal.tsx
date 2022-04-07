@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
 import CLOSE_ICON from 'images/close.svg';
@@ -8,6 +8,7 @@ interface BaseModalProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   motionKey: string;
+  onClose?: () => void;
 }
 
 const BaseModalOuterContainer = styled.div`
@@ -61,15 +62,17 @@ const BaseModal: React.FC<BaseModalProps> = ({
   isOpen,
   setIsOpen,
   children,
+  onClose,
 }) => {
+  const close = useCallback(() => {
+    setIsOpen(false);
+    onClose && onClose();
+  }, [onClose, setIsOpen]);
+
   return (
     <AnimatePresence>
       {isOpen ? (
-        <BaseModalOuterContainer
-          onClick={() => {
-            setIsOpen(false);
-          }}
-        >
+        <BaseModalOuterContainer onClick={close}>
           <motion.div
             key={motionKey}
             initial={{ opacity: 0, y: '-100vh' }}
@@ -85,13 +88,7 @@ const BaseModal: React.FC<BaseModalProps> = ({
             >
               <CloseIconContainer>
                 <motion.div whileHover={{ scale: 1.2 }}>
-                  <CloseIcon
-                    src={CLOSE_ICON}
-                    alt=""
-                    onClick={() => {
-                      setIsOpen(false);
-                    }}
-                  />
+                  <CloseIcon src={CLOSE_ICON} alt="" onClick={close} />
                 </motion.div>
               </CloseIconContainer>
               {children}
