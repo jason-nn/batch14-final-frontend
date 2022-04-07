@@ -40,7 +40,8 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
 
   const validate = useCallback(
     (value: string) => {
-      const zod = validators.safeParse(value);
+      const formattedValue = type === 'number' ? parseFloat(value) : value;
+      const zod = validators.safeParse(formattedValue);
       if (zod.success) {
         setIsValid(true);
         setError(null);
@@ -49,7 +50,7 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
         setError(zod.error.issues[0].message);
       }
     },
-    [setIsValid, validators]
+    [setIsValid, validators, type]
   );
 
   useEffect(() => {
