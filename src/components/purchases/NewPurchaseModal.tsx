@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { z } from 'zod';
 
 import Form from 'components/shared/Form';
+import SearchCryptocurrencyInput from 'components/shared/inputs/SearchCryptocurrencyInput';
 import ValidatedBaseInput from 'components/shared/inputs/ValidatedBaseInput';
 import BaseModal from 'components/shared/modals/BaseModal';
 
@@ -56,7 +57,7 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
         buttonText="Add purchase"
         buttonWidth="140px"
       >
-        <ValidatedBaseInput
+        <SearchCryptocurrencyInput
           label="Cryptocurrency"
           type="text"
           value={cryptocurrencyValue}

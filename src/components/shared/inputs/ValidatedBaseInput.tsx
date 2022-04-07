@@ -93,3 +93,4 @@ const ValidatedBaseInput: React.FC<ValidatedBaseInputProps> = ({
 };
 
 export default ValidatedBaseInput;
+export type { ValidatedBaseInputProps };
