@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import NewPurchaseModal from 'components/shared/modals/NewPurchaseModal';
+import NewPurchaseModal from 'components/purchases/NewPurchaseModal';
 
 const ModalContext = React.createContext<{
   setIsPurchaseModalOpen: React.Dispatch<React.SetStateAction<boolean>> | null;

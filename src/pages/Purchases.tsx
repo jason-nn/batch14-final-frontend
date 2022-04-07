@@ -4,11 +4,12 @@ import styled from 'styled-components';
 
 import PurchaseTable from 'components/purchases/PurchaseTable';
 
+import NewPurchaseButton from 'components/purchases/NewPurchaseButton';
+
 import BodyContainer from 'components/shared/BodyContainer';
 import Header from 'components/shared/Header';
 import Navbar from 'components/shared/Navbar';
 import SignedIn from 'components/shared/SignedIn';
-import NewPurchaseButton from 'components/shared/buttons/NewPurchaseButton';
 import BaseInput from 'components/shared/inputs/BaseInput';
 
 const SpaceBetween = styled.div`

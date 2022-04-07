@@ -23,7 +23,9 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
   const onSubmit = useCallback(() => {
     setSubmittingValue(true);
     console.log('Submit');
-    setSubmittingValue(false);
+    setTimeout(() => {
+      setSubmittingValue(false);
+    }, 1000);
   }, []);
 
   const disabled = useMemo(
