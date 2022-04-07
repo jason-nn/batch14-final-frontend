@@ -29,7 +29,9 @@ const DollarCostAverageTable: React.FC = () => {
             symbol={symbol}
             dollarCostAverage={dollarCostAverage}
             currentPrice={currentPrice}
-            profitAndLoss={(currentPrice - dollarCostAverage) / currentPrice}
+            profitAndLoss={
+              (currentPrice - dollarCostAverage) / dollarCostAverage
+            }
           />
         );
       })}
