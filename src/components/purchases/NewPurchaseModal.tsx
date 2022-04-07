@@ -35,7 +35,7 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
   );
 
   return (
-    <BaseModal key="purchase-modal" isOpen={isOpen} setIsOpen={setIsOpen}>
+    <BaseModal isOpen={isOpen} setIsOpen={setIsOpen} motionKey="purchase-modal">
       <Form
         header="New Purchase"
         onSubmit={onSubmit}

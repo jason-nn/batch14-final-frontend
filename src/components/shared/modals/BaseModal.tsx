@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import close from 'images/close.svg';
 
 interface BaseModalProps {
-  key: string;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  motionKey: string;
 }
 
 const BaseModalOuterContainer = styled.div`
@@ -57,7 +57,7 @@ const CloseIcon = styled.img`
 `;
 
 const BaseModal: React.FC<BaseModalProps> = ({
-  key,
+  motionKey,
   isOpen,
   setIsOpen,
   children,
@@ -71,7 +71,7 @@ const BaseModal: React.FC<BaseModalProps> = ({
           }}
         >
           <motion.div
-            key={key}
+            key={motionKey}
             initial={{ opacity: 0, y: '-100vh' }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100vh' }}
