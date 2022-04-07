@@ -30,12 +30,12 @@ const App: React.FC = () => {
 
   return (
     <UserContextProvider>
-      <PurchaseContextProvider>
-        <AlertContextProvider>
-          <ToastContextProvider>
-            <SymbolContextProvider>
+      <SymbolContextProvider>
+        <PurchaseContextProvider>
+          <PortfolioContextProvider>
+            <AlertContextProvider>
               <ModalContextProvider>
-                <PortfolioContextProvider>
+                <ToastContextProvider>
                   <BrowserRouter>
                     <Routes>
                       <Route path="/" element={<Home />} />
@@ -47,12 +47,12 @@ const App: React.FC = () => {
                       <Route path="/sign-up" element={<SignUp />} />
                     </Routes>
                   </BrowserRouter>
-                </PortfolioContextProvider>
+                </ToastContextProvider>
               </ModalContextProvider>
-            </SymbolContextProvider>
-          </ToastContextProvider>
-        </AlertContextProvider>
-      </PurchaseContextProvider>
+            </AlertContextProvider>
+          </PortfolioContextProvider>
+        </PurchaseContextProvider>
+      </SymbolContextProvider>
     </UserContextProvider>
   );
 };
