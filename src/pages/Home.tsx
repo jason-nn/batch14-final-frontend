@@ -9,7 +9,7 @@ import BodyContainer from 'components/shared/BodyContainer';
 import Header from 'components/shared/Header';
 import Navbar from 'components/shared/Navbar';
 import SignedIn from 'components/shared/SignedIn';
-import PrimaryButton from 'components/shared/buttons/PrimaryButton';
+import NewPurchaseButton from 'components/shared/buttons/NewPurchaseButton';
 
 const SpaceBetween = styled.div`
   display: flex;
@@ -29,11 +29,7 @@ const Home: React.FC = () => {
         <BodyContainer>
           <SpaceBetween>
             <Header>Dollar Cost Average</Header>
-            <PrimaryButton
-              buttonText="New purchase"
-              disabled={false}
-              loading={false}
-            />
+            <NewPurchaseButton />
           </SpaceBetween>
           <DollarCostAverageTable />
           <div />

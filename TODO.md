@@ -6,5 +6,7 @@
 - [ ] add modal for new purchase
 - [ ] add functionality for new purchase modal
 
+- [ ] update prices without having to refresh page
+
 - [ ] add readme
 - [ ] deploy
