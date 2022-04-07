@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import React, { useContext, useMemo } from 'react';
 import styled from 'styled-components';
 
@@ -73,15 +74,27 @@ const SearchCryptocurrencyInput: React.FC<ValidatedBaseInputProps> = ({
         watch={watch}
         backgroundColor={backgroundColor}
       />
-      {searchResults.length > 0 && value.length > 0 && (
-        <SearchResultsOuterContainer>
-          <SearchResultsInnerContainer>
-            {searchResults.map((searchResult) => (
-              <span>{searchResult}</span>
-            ))}
-          </SearchResultsInnerContainer>
-        </SearchResultsOuterContainer>
-      )}
+      <AnimatePresence>
+        {searchResults.length > 0 && value.length > 0 && (
+          <motion.div
+            key={`${label
+              .toLowerCase()
+              .split(' ')
+              .join('-')}-search-cryptocurrency-input-search-results`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <SearchResultsOuterContainer>
+              <SearchResultsInnerContainer>
+                {searchResults.map((searchResult) => (
+                  <div>{searchResult.toUpperCase()}</div>
+                ))}
+              </SearchResultsInnerContainer>
+            </SearchResultsOuterContainer>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </SearchCryptocurrencyInputContainer>
   );
 };
