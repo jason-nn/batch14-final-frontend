@@ -72,6 +72,17 @@ const hodlr = {
     });
   },
 
+  symbols: (token: string) => {
+    return axios({
+      method: 'get',
+      url: 'api/v1/cryptocurrencies/symbols',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
   purchases: (token: string) => {
     return axios({
       method: 'get',
