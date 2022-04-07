@@ -42,7 +42,7 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
         disabled={disabled}
         submitting={submittingValue}
         buttonText="Add purchase"
-        // add button width
+        buttonWidth="140px"
       >
         <ValidatedBaseInput
           label="Cryptocurrency"
