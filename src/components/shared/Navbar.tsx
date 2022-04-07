@@ -72,9 +72,8 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
         userDispatch({
           type: 'SIGNOUT',
         });
-        if (toastDispatch) {
+        toastDispatch &&
           toastDispatch({ type: 'SUCCESS', message: 'Successful sign out' });
-        }
       }, 500);
     }
   };

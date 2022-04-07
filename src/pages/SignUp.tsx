@@ -48,26 +48,23 @@ const SignUp: React.FC = () => {
             },
           });
           setSubmittingValue(false);
-          if (toastDispatch) {
+          toastDispatch &&
             toastDispatch({ type: 'SUCCESS', message: 'Successful sign in' });
-          }
           navigate('/', { replace: true });
         } else {
           setSubmittingValue(false);
-          if (toastDispatch) {
+          toastDispatch &&
             toastDispatch({ type: 'SUCCESS', message: 'Internal error' });
-          }
         }
       })
       .catch((error) => {
         console.log(error);
         setSubmittingValue(false);
-        if (toastDispatch) {
+        toastDispatch &&
           toastDispatch({
             type: 'ERROR',
             message: 'Email is already being used',
           });
-        }
       });
   }, [emailValue, passwordValue, userDispatch, toastDispatch, navigate]);
 
