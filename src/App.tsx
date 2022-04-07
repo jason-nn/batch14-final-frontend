@@ -9,6 +9,7 @@ import PortfolioContextProvider from 'components/home/PortfolioContextProvider';
 import PurchaseContextProvider from 'components/purchases/PurchaseContextProvider';
 
 import UserContextProvider from 'components/shared/UserContextProvider';
+import SymbolContextProvider from 'components/shared/SymbolContextProvider';
 import ModalContextProvider from 'components/shared/modals/ModalContextProvider';
 import ToastContextProvider from 'components/shared/toasts/ToastContextProvider';
 
@@ -32,21 +33,23 @@ const App: React.FC = () => {
       <PurchaseContextProvider>
         <AlertContextProvider>
           <ToastContextProvider>
-            <ModalContextProvider>
-              <PortfolioContextProvider>
-                <BrowserRouter>
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/purchases" element={<Purchases />} />
-                    {features.alerts ? (
-                      <Route path="/alerts" element={<Alerts />} />
-                    ) : null}
-                    <Route path="/sign-in" element={<SignIn />} />
-                    <Route path="/sign-up" element={<SignUp />} />
-                  </Routes>
-                </BrowserRouter>
-              </PortfolioContextProvider>
-            </ModalContextProvider>
+            <SymbolContextProvider>
+              <ModalContextProvider>
+                <PortfolioContextProvider>
+                  <BrowserRouter>
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/purchases" element={<Purchases />} />
+                      {features.alerts ? (
+                        <Route path="/alerts" element={<Alerts />} />
+                      ) : null}
+                      <Route path="/sign-in" element={<SignIn />} />
+                      <Route path="/sign-up" element={<SignUp />} />
+                    </Routes>
+                  </BrowserRouter>
+                </PortfolioContextProvider>
+              </ModalContextProvider>
+            </SymbolContextProvider>
           </ToastContextProvider>
         </AlertContextProvider>
       </PurchaseContextProvider>
