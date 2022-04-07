@@ -84,11 +84,7 @@ const BaseModal: React.FC<BaseModalProps> = ({
               }}
             >
               <CloseIconContainer>
-                <motion.div
-                  initial={{ scale: 1.0 }}
-                  animate={{ scale: 1.0 }}
-                  whileHover={{ scale: 1.1 }}
-                >
+                <motion.div whileHover={{ scale: 1.2 }}>
                   <CloseIcon
                     src={close}
                     alt=""
