@@ -20,6 +20,8 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
   const [cryptocurrencyValue, setCryptocurrencyValue] = useState<string>('');
   const [isCryptocurrencyValueValid, setIsCryptocurrencyValueValid] =
     useState<boolean>(false);
+  const [showCryptocurrencyInput, setShowCryptocurrencyInput] =
+    useState<boolean>(true);
 
   const [priceInUsdValue, setPriceInUsdValue] = useState<string>('');
   const [isPriceInUsdValueValid, setIsPriceInUsdValueValid] =
@@ -41,14 +43,36 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
     () =>
       !(
         isCryptocurrencyValueValid &&
+        !showCryptocurrencyInput &&
         isPriceInUsdValueValid &&
         isQuantityValueValid
       ),
-    [isCryptocurrencyValueValid, isPriceInUsdValueValid, isQuantityValueValid]
+    [
+      isCryptocurrencyValueValid,
+      showCryptocurrencyInput,
+      isPriceInUsdValueValid,
+      isQuantityValueValid,
+    ]
   );
 
+  const reset = useCallback(() => {
+    setSubmittingValue(false);
+    setCryptocurrencyValue('');
+    setIsCryptocurrencyValueValid(false);
+    setShowCryptocurrencyInput(true);
+    setPriceInUsdValue('');
+    setIsPriceInUsdValueValid(false);
+    setQuantityValue('');
+    setIsQuantityValueValid(false);
+  }, []);
+
   return (
-    <BaseModal isOpen={isOpen} setIsOpen={setIsOpen} motionKey="purchase-modal">
+    <BaseModal
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      motionKey="purchase-modal"
+      onClose={reset}
+    >
       <Form
         header="New Purchase"
         onSubmit={onSubmit}
@@ -64,6 +88,8 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
           setValue={setCryptocurrencyValue}
           setIsValid={setIsCryptocurrencyValueValid}
           validators={z.string().min(1, { message: 'This field is required' })}
+          showInput={showCryptocurrencyInput}
+          setShowInput={setShowCryptocurrencyInput}
         />
         <ValidatedBaseInput
           label="Price in USD"

@@ -15,6 +15,11 @@ import ValidatedBaseInput, {
 
 import CLOSE_ICON from 'images/close.svg';
 
+interface SearchCryptocurrencyInputProps extends ValidatedBaseInputProps {
+  showInput: boolean;
+  setShowInput: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 interface SearchResultProps {
   highlight: boolean;
 }
@@ -95,7 +100,7 @@ const Error = styled.div`
   margin-top: 5px;
 `;
 
-const SearchCryptocurrencyInput: React.FC<ValidatedBaseInputProps> = ({
+const SearchCryptocurrencyInput: React.FC<SearchCryptocurrencyInputProps> = ({
   label,
   showLabel,
   type,
@@ -106,12 +111,13 @@ const SearchCryptocurrencyInput: React.FC<ValidatedBaseInputProps> = ({
   validators,
   watch,
   backgroundColor,
+  showInput,
+  setShowInput,
 }) => {
   const { symbols } = useContext(SymbolContext);
 
   const [highlightedSearchResultIndex, setHighlightedSearchResultIndex] =
     useState<number>(0);
-  const [showInput, setShowInput] = useState<boolean>(true);
 
   useEffect(() => {
     setHighlightedSearchResultIndex(0);
@@ -132,7 +138,7 @@ const SearchCryptocurrencyInput: React.FC<ValidatedBaseInputProps> = ({
   const select = useCallback(() => {
     setValue(searchResults[highlightedSearchResultIndex].toUpperCase());
     setShowInput(false);
-  }, [setValue, searchResults, highlightedSearchResultIndex]);
+  }, [setValue, searchResults, highlightedSearchResultIndex, setShowInput]);
 
   const onKeyDown = useCallback(
     (event) => {
