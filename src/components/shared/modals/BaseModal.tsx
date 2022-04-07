@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
 import styled from 'styled-components';
 
-import close from 'images/close.svg';
+import CLOSE_ICON from 'images/close.svg';
 
 interface BaseModalProps {
   isOpen: boolean;
@@ -86,7 +86,7 @@ const BaseModal: React.FC<BaseModalProps> = ({
               <CloseIconContainer>
                 <motion.div whileHover={{ scale: 1.2 }}>
                   <CloseIcon
-                    src={close}
+                    src={CLOSE_ICON}
                     alt=""
                     onClick={() => {
                       setIsOpen(false);

@@ -1,9 +1,6 @@
 # To Do
 
-- [x] add dollar cost average table
-- [x] add portfolio table
-
-- [ ] add new purchase modal
+- [ ] new purchase submit function
 
 - [ ] update prices without having to refresh page
 

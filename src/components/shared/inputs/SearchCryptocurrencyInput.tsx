@@ -13,7 +13,7 @@ import ValidatedBaseInput, {
   ValidatedBaseInputProps,
 } from 'components/shared/inputs/ValidatedBaseInput';
 
-import close from 'images/close.svg';
+import CLOSE_ICON from 'images/close.svg';
 
 interface SearchResultProps {
   highlight: boolean;
@@ -21,9 +21,6 @@ interface SearchResultProps {
 
 const SearchCryptocurrencyInputContainer = styled.div`
   position: relative;
-
-  display: flex;
-  flex-direction: column;
 `;
 
 const SearchResultsOuterContainer = styled.div`
@@ -221,7 +218,7 @@ const SearchCryptocurrencyInput: React.FC<ValidatedBaseInputProps> = ({
             <span>{value}</span>
             <motion.div whileHover={{ scale: 1.2 }}>
               <img
-                src={close}
+                src={CLOSE_ICON}
                 alt=""
                 onClick={() => {
                   setShowInput(true);
