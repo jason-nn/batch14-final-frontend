@@ -1,8 +1,8 @@
 const urls = {
   // backend: 'http://localhost:4000',
-  // websocket: 'ws://localhost:4000/cable',
+  // websocket: 'wss://localhost:4000/cable',
   backend: 'https://hodlrbyjason.herokuapp.com',
-  websocket: 'ws://hodlrbyjason.herokuapp.com/cable',
+  websocket: 'wss://hodlrbyjason.herokuapp.com/cable',
 };
 
 export default urls;
