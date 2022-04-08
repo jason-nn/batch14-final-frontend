@@ -32,8 +32,8 @@ const App: React.FC = () => {
     <UserContextProvider>
       <SymbolContextProvider>
         <PurchaseContextProvider>
-          <PortfolioContextProvider>
-            <AlertContextProvider>
+          <AlertContextProvider>
+            <PortfolioContextProvider>
               <ToastContextProvider>
                 <ModalContextProvider>
                   <BrowserRouter>
@@ -49,8 +49,8 @@ const App: React.FC = () => {
                   </BrowserRouter>
                 </ModalContextProvider>
               </ToastContextProvider>
-            </AlertContextProvider>
-          </PortfolioContextProvider>
+            </PortfolioContextProvider>
+          </AlertContextProvider>
         </PurchaseContextProvider>
       </SymbolContextProvider>
     </UserContextProvider>
