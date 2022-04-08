@@ -99,7 +99,7 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
                 toastDispatch &&
                   toastDispatch({
                     type: 'ERROR',
-                    message: 'Coin data not available',
+                    message: 'Internal error',
                   });
               });
           } else {
@@ -115,7 +115,10 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
           console.log(error);
           setSubmittingValue(false);
           toastDispatch &&
-            toastDispatch({ type: 'ERROR', message: 'Could not find coin' });
+            toastDispatch({
+              type: 'ERROR',
+              message: 'Coin data not available',
+            });
         });
     } else {
       setSubmittingValue(false);
