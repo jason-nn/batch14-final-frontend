@@ -29,7 +29,7 @@ const Home: React.FC = () => {
       >
         <BodyContainer>
           <SpaceBetween>
-            <Header>Dollar Cost Average</Header>
+            <Header>Prices</Header>
             <NewPurchaseButton />
           </SpaceBetween>
           <DollarCostAverageTable />

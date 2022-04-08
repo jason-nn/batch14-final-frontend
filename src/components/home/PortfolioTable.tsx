@@ -12,7 +12,7 @@ const PortfolioTable: React.FC = () => {
   return (
     <TableContainer isEmpty={Object.keys(portfolio).length < 1}>
       <TableHeaders columns={4}>
-        <div>Cryptocurrency</div>
+        <div>Coin</div>
         <div>Acquisition Cost</div>
         <div>Current Value</div>
         <div>Profit &amp; Loss</div>

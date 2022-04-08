@@ -24,9 +24,9 @@ const PurchaseTable: React.FC<PurchaseTableProps> = ({ filter }) => {
   return (
     <TableContainer isEmpty={filteredUserPurchases.length < 1}>
       <TableHeaders columns={3}>
-        <div>Cryptocurrency</div>
-        <div>Price at Time of Purchase</div>
-        <div>Quantity Purchased</div>
+        <div>Coin</div>
+        <div>Price per Coin</div>
+        <div>Quantity</div>
       </TableHeaders>
       {filteredUserPurchases.map((purchase, key) => (
         <PurchaseRow

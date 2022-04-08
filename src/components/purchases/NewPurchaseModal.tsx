@@ -82,7 +82,7 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
         buttonWidth="140px"
       >
         <SearchCryptocurrencyInput
-          label="Cryptocurrency"
+          label="Coin"
           type="text"
           value={cryptocurrencyValue}
           setValue={setCryptocurrencyValue}
@@ -92,7 +92,7 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
           setShowInput={setShowCryptocurrencyInput}
         />
         <ValidatedBaseInput
-          label="Price in USD"
+          label="Price per Coin in USD"
           type="number"
           value={priceInUsdValue}
           setValue={setPriceInUsdValue}

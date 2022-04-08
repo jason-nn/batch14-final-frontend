@@ -40,7 +40,7 @@ const Purchases: React.FC = () => {
             type="text"
             value={searchValue}
             setValue={setSearchValue}
-            placeholder="Search by crypto"
+            placeholder="Search by coin"
             backgroundColor="#FFFFFF"
           />
           <PurchaseTable filter={searchValue} />
