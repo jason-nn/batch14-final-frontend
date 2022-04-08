@@ -1,6 +1,7 @@
 # To Do
 
-- [ ] add to local user purchases
+- [ ] fix error messages
+- [ ] fix imports
 
 - [ ] update prices without having to refresh page
 

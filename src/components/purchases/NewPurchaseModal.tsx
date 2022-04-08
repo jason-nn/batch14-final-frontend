@@ -1,15 +1,16 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { z } from 'zod';
 
+import { PurchaseContext } from 'components/purchases/PurchaseContextProvider';
+
 import Form from 'components/shared/Form';
+import { UserContext } from 'components/shared/UserContextProvider';
 import SearchCryptocurrencyInput from 'components/shared/inputs/SearchCryptocurrencyInput';
 import ValidatedBaseInput from 'components/shared/inputs/ValidatedBaseInput';
 import BaseModal from 'components/shared/modals/BaseModal';
+import { ToastContext } from 'components/shared/toasts/ToastContextProvider';
 
 import hodlr from 'services/hodlr';
-
-import { UserContext } from 'components/shared/UserContextProvider';
-import { ToastContext } from 'components/shared/toasts/ToastContextProvider';
 
 interface NewPurchaseModalProps {
   isOpen: boolean;
@@ -22,6 +23,7 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
 }) => {
   const { userState } = useContext(UserContext);
   const { toastDispatch } = useContext(ToastContext);
+  const { setUserPurchases } = useContext(PurchaseContext);
 
   const [submittingValue, setSubmittingValue] = useState<boolean>(false);
 
@@ -83,6 +85,8 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
               })
               .then((response) => {
                 console.log(response);
+                setUserPurchases &&
+                  setUserPurchases((current) => [...current, response.data]);
                 setSubmittingValue(false);
                 toastDispatch &&
                   toastDispatch({ type: 'SUCCESS', message: 'Added purchase' });
@@ -95,7 +99,7 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
                 toastDispatch &&
                   toastDispatch({
                     type: 'ERROR',
-                    message: 'Could not add purchase',
+                    message: 'Coin data not available',
                   });
               });
           } else {
@@ -126,6 +130,7 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
     reset,
     setIsOpen,
     toastDispatch,
+    setUserPurchases,
   ]);
 
   return (
