@@ -1,10 +1,15 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { z } from 'zod';
 
 import Form from 'components/shared/Form';
 import SearchCryptocurrencyInput from 'components/shared/inputs/SearchCryptocurrencyInput';
 import ValidatedBaseInput from 'components/shared/inputs/ValidatedBaseInput';
 import BaseModal from 'components/shared/modals/BaseModal';
+
+import hodlr from 'services/hodlr';
+
+import { UserContext } from 'components/shared/UserContextProvider';
+import { ToastContext } from 'components/shared/toasts/ToastContextProvider';
 
 interface NewPurchaseModalProps {
   isOpen: boolean;
@@ -15,6 +20,9 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
   isOpen,
   setIsOpen,
 }) => {
+  const { userState } = useContext(UserContext);
+  const { toastDispatch } = useContext(ToastContext);
+
   const [submittingValue, setSubmittingValue] = useState<boolean>(false);
 
   const [cryptocurrencyValue, setCryptocurrencyValue] = useState<string>('');
@@ -30,14 +38,6 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
   const [quantityValue, setQuantityValue] = useState<string>('');
   const [isQuantityValueValid, setIsQuantityValueValid] =
     useState<boolean>(false);
-
-  const onSubmit = useCallback(() => {
-    setSubmittingValue(true);
-    console.log('Submit');
-    setTimeout(() => {
-      setSubmittingValue(false);
-    }, 1000);
-  }, []);
 
   const disabled = useMemo(
     () =>
@@ -65,6 +65,68 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
     setQuantityValue('');
     setIsQuantityValueValid(false);
   }, []);
+
+  const onSubmit = useCallback(() => {
+    setSubmittingValue(true);
+    if (userState.token) {
+      hodlr
+        .cryptocurrency(userState.token, cryptocurrencyValue)
+        .then((response) => {
+          console.log(response);
+          const cryptocurrencyId = response.data.id;
+          if (userState.token) {
+            hodlr
+              .createPurchase(userState.token, {
+                cryptocurrencyId,
+                price: parseFloat(priceInUsdValue),
+                quantity: parseFloat(quantityValue),
+              })
+              .then((response) => {
+                console.log(response);
+                setSubmittingValue(false);
+                toastDispatch &&
+                  toastDispatch({ type: 'SUCCESS', message: 'Added purchase' });
+                setIsOpen(false);
+                reset();
+              })
+              .catch((error) => {
+                console.log(error);
+                setSubmittingValue(false);
+                toastDispatch &&
+                  toastDispatch({
+                    type: 'ERROR',
+                    message: 'Could not add purchase',
+                  });
+              });
+          } else {
+            setSubmittingValue(false);
+            toastDispatch &&
+              toastDispatch({
+                type: 'ERROR',
+                message: 'You are not authenticated',
+              });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          setSubmittingValue(false);
+          toastDispatch &&
+            toastDispatch({ type: 'ERROR', message: 'Could not find coin' });
+        });
+    } else {
+      setSubmittingValue(false);
+      toastDispatch &&
+        toastDispatch({ type: 'ERROR', message: 'You are not authenticated' });
+    }
+  }, [
+    cryptocurrencyValue,
+    priceInUsdValue,
+    quantityValue,
+    userState.token,
+    reset,
+    setIsOpen,
+    toastDispatch,
+  ]);
 
   return (
     <BaseModal

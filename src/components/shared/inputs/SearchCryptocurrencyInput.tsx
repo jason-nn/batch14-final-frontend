@@ -133,7 +133,6 @@ const SearchCryptocurrencyInput: React.FC<SearchCryptocurrencyInputProps> = ({
   );
 
   const noResults = useMemo(() => searchResults.length < 1, [searchResults]);
-  console.log(noResults);
 
   const select = useCallback(() => {
     setValue(searchResults[highlightedSearchResultIndex].toUpperCase());

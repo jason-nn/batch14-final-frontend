@@ -1,14 +1,6 @@
 # To Do
 
-- [ ] call api to create new purchase
-
-  - [ ] if success
-    - [ ] add to local user purchases
-    - [ ] close modal
-    - [ ] reset form
-    - [ ] show success toast
-  - [ ] if error
-    - [ ] show error toast
+- [ ] add to local user purchases
 
 - [ ] update prices without having to refresh page
 

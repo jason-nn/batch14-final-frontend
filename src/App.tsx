@@ -34,8 +34,8 @@ const App: React.FC = () => {
         <PurchaseContextProvider>
           <PortfolioContextProvider>
             <AlertContextProvider>
-              <ModalContextProvider>
-                <ToastContextProvider>
+              <ToastContextProvider>
+                <ModalContextProvider>
                   <BrowserRouter>
                     <Routes>
                       <Route path="/" element={<Home />} />
@@ -47,8 +47,8 @@ const App: React.FC = () => {
                       <Route path="/sign-up" element={<SignUp />} />
                     </Routes>
                   </BrowserRouter>
-                </ToastContextProvider>
-              </ModalContextProvider>
+                </ModalContextProvider>
+              </ToastContextProvider>
             </AlertContextProvider>
           </PortfolioContextProvider>
         </PurchaseContextProvider>
