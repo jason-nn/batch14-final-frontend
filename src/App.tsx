@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import ActionCableProvider from 'react-actioncable-provider';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import AlertContextProvider from 'components/alerts/AlertContextProvider';
@@ -20,40 +21,39 @@ import SignIn from 'pages/SignIn';
 import SignUp from 'pages/SignUp';
 
 import features from 'utils/features';
+import urls from 'utils/urls';
 
 const App: React.FC = () => {
-  // dev
-  axios.defaults.baseURL = 'http://localhost:4000';
-
-  // prod
-  // axios.defaults.baseURL = 'https://hodlrbyjason.herokuapp.com/';
+  axios.defaults.baseURL = urls.backend;
 
   return (
-    <UserContextProvider>
-      <SymbolContextProvider>
-        <PurchaseContextProvider>
-          <AlertContextProvider>
-            <PortfolioContextProvider>
-              <ToastContextProvider>
-                <ModalContextProvider>
-                  <BrowserRouter>
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/purchases" element={<Purchases />} />
-                      {features.alerts ? (
-                        <Route path="/alerts" element={<Alerts />} />
-                      ) : null}
-                      <Route path="/sign-in" element={<SignIn />} />
-                      <Route path="/sign-up" element={<SignUp />} />
-                    </Routes>
-                  </BrowserRouter>
-                </ModalContextProvider>
-              </ToastContextProvider>
-            </PortfolioContextProvider>
-          </AlertContextProvider>
-        </PurchaseContextProvider>
-      </SymbolContextProvider>
-    </UserContextProvider>
+    <ActionCableProvider url={urls.websocket}>
+      <UserContextProvider>
+        <SymbolContextProvider>
+          <PurchaseContextProvider>
+            <AlertContextProvider>
+              <PortfolioContextProvider>
+                <ToastContextProvider>
+                  <ModalContextProvider>
+                    <BrowserRouter>
+                      <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/purchases" element={<Purchases />} />
+                        {features.alerts ? (
+                          <Route path="/alerts" element={<Alerts />} />
+                        ) : null}
+                        <Route path="/sign-in" element={<SignIn />} />
+                        <Route path="/sign-up" element={<SignUp />} />
+                      </Routes>
+                    </BrowserRouter>
+                  </ModalContextProvider>
+                </ToastContextProvider>
+              </PortfolioContextProvider>
+            </AlertContextProvider>
+          </PurchaseContextProvider>
+        </SymbolContextProvider>
+      </UserContextProvider>
+    </ActionCableProvider>
   );
 };
 
