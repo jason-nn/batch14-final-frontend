@@ -5,7 +5,7 @@ interface ProfitAndLossContainerProps {
 }
 
 const ProfitAndLossContainer = styled.div<ProfitAndLossContainerProps>`
-  color: ${(props) => (props.value < 0 ? '#EF4444' : '#34D399')};
+  color: ${(props) => (props.value < 0 ? '#EF4444' : '#10B981')};
 `;
 
 export default ProfitAndLossContainer;

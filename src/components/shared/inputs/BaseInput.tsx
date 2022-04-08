@@ -62,6 +62,7 @@ const BaseInput: React.FC<BaseInputProps> = ({
       {showLabel ? <label>{label}</label> : null}
       <input
         type={type}
+        step="any"
         placeholder={placeholder}
         value={value}
         onChange={(e) => {
