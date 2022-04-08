@@ -70,3 +70,8 @@ input:-webkit-autofill:active {
 :-moz-placeholder {
   color: #a3a3a3;
 }
+
+::selection {
+  color: #1d4ed8;
+  background-color: #eff6ff;
+}
