@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 
 import { UserContext } from 'components/shared/UserContextProvider';
 
@@ -16,7 +16,7 @@ const PurchaseContextProvider: React.FC = ({ children }) => {
 
   const { userState } = useContext(UserContext);
 
-  useEffect(() => {
+  const getPurchases = useCallback(() => {
     if (userState.token) {
       hodlr
         .purchases(userState.token)
@@ -29,6 +29,16 @@ const PurchaseContextProvider: React.FC = ({ children }) => {
         });
     }
   }, [userState]);
+
+  useEffect(() => {
+    getPurchases();
+    const getPurchasesInterval = setInterval(() => {
+      getPurchases();
+    }, 300000);
+    return () => {
+      clearInterval(getPurchasesInterval);
+    };
+  }, [getPurchases]);
 
   return (
     <PurchaseContext.Provider value={{ userPurchases, setUserPurchases }}>
