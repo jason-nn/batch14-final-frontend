@@ -2,9 +2,8 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import PurchaseTable from 'components/purchases/PurchaseTable';
-
 import NewPurchaseButton from 'components/purchases/NewPurchaseButton';
+import PurchaseTable from 'components/purchases/PurchaseTable';
 
 import BodyContainer from 'components/shared/BodyContainer';
 import Header from 'components/shared/Header';

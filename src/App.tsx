@@ -8,8 +8,8 @@ import PortfolioContextProvider from 'components/home/PortfolioContextProvider';
 
 import PurchaseContextProvider from 'components/purchases/PurchaseContextProvider';
 
-import UserContextProvider from 'components/shared/UserContextProvider';
 import SymbolContextProvider from 'components/shared/SymbolContextProvider';
+import UserContextProvider from 'components/shared/UserContextProvider';
 import ModalContextProvider from 'components/shared/modals/ModalContextProvider';
 import ToastContextProvider from 'components/shared/toasts/ToastContextProvider';
 
