@@ -1,4 +1,4 @@
 # To Do
 
-- [ ] work with prod urls
+- [ ] work with prod websocket
 - [ ] add readme
