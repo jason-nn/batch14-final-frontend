@@ -86,7 +86,7 @@ const NewPurchaseModal: React.FC<NewPurchaseModalProps> = ({
               .then((response) => {
                 console.log(response);
                 setUserPurchases &&
-                  setUserPurchases((current) => [...current, response.data]);
+                  setUserPurchases((current) => [response.data, ...current]);
                 setSubmittingValue(false);
                 toastDispatch &&
                   toastDispatch({ type: 'SUCCESS', message: 'Added purchase' });
