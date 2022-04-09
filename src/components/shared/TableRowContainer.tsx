@@ -12,12 +12,6 @@ const TableRowContainer = styled.div<TableRowContainerProps>`
   font-family: CircularStd-Bold;
   font-size: 14px;
   font-feature-settings: 'tnum' on, 'lnum' on;
-
-  border-radius: 4px;
-
-  &:hover {
-    background-color: #eff6ff;
-  }
 `;
 
 export default TableRowContainer;
