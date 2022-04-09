@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import styled from 'styled-components';
 
-import DollarCostAverageTable from 'components/home/DollarCostAverageTable';
 import PortfolioTable from 'components/home/PortfolioTable';
+import PricesTable from 'components/home/PricesTable';
 
 import NewPurchaseButton from 'components/purchases/NewPurchaseButton';
 
@@ -32,7 +32,7 @@ const Home: React.FC = () => {
             <Header>Prices</Header>
             <NewPurchaseButton />
           </SpaceBetween>
-          <DollarCostAverageTable />
+          <PricesTable />
           <div />
           <Header>Portfolio</Header>
           <PortfolioTable />

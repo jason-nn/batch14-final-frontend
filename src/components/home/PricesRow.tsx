@@ -4,16 +4,16 @@ import ProfitAndLossContainer from 'components/shared/ProfitAndLossContainer';
 import SpaceBetween from 'components/shared/SpaceBetween';
 import TableRowContainer from 'components/shared/TableRowContainer';
 
-interface DollarCostAverageRowProps {
+interface PricesRowProps {
   symbol: string;
-  dollarCostAverage: number;
+  averageBuyPrice: number;
   currentPrice: number;
   profitAndLoss: number;
 }
 
-const DollarCostAverageRow: React.FC<DollarCostAverageRowProps> = ({
+const PricesRow: React.FC<PricesRowProps> = ({
   symbol,
-  dollarCostAverage,
+  averageBuyPrice,
   currentPrice,
   profitAndLoss,
 }) => {
@@ -22,7 +22,7 @@ const DollarCostAverageRow: React.FC<DollarCostAverageRowProps> = ({
       <div>{symbol.toUpperCase()}</div>
       <SpaceBetween>
         <span>$</span>
-        <span>{dollarCostAverage.toFixed(2)}</span>
+        <span>{averageBuyPrice.toFixed(2)}</span>
       </SpaceBetween>
       <SpaceBetween>
         <span>$</span>
@@ -38,4 +38,4 @@ const DollarCostAverageRow: React.FC<DollarCostAverageRowProps> = ({
   );
 };
 
-export default DollarCostAverageRow;
+export default PricesRow;

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 
-import DollarCostAverageRow from 'components/home/DollarCostAverageRow';
 import { PortfolioContext } from 'components/home/PortfolioContextProvider';
+import PricesRow from 'components/home/PricesRow';
 
 import TableContainer from 'components/shared/TableContainer';
 import TableHeaders from 'components/shared/TableHeaders';
 
-const DollarCostAverageTable: React.FC = () => {
+const PricesTable: React.FC = () => {
   const { portfolio } = useContext(PortfolioContext);
 
   return (
@@ -20,18 +20,16 @@ const DollarCostAverageTable: React.FC = () => {
       {Object.keys(portfolio).map((symbol, key) => {
         const data = portfolio[symbol];
 
-        const dollarCostAverage = data.sumProduct / data.sum;
+        const averageBuyPrice = data.sumProduct / data.sum;
         const currentPrice = data.currentPrice;
 
         return (
-          <DollarCostAverageRow
+          <PricesRow
             key={key}
             symbol={symbol}
-            dollarCostAverage={dollarCostAverage}
+            averageBuyPrice={averageBuyPrice}
             currentPrice={currentPrice}
-            profitAndLoss={
-              (currentPrice - dollarCostAverage) / dollarCostAverage
-            }
+            profitAndLoss={(currentPrice - averageBuyPrice) / averageBuyPrice}
           />
         );
       })}
@@ -39,4 +37,4 @@ const DollarCostAverageTable: React.FC = () => {
   );
 };
 
-export default DollarCostAverageTable;
+export default PricesTable;
