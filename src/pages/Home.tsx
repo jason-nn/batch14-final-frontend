@@ -1,19 +1,17 @@
 import { motion } from 'framer-motion';
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import PortfolioTable from 'components/home/PortfolioTable';
 import PricesTable from 'components/home/PricesTable';
 
 import NewPurchaseButton from 'components/purchases/NewPurchaseButton';
-import { PurchaseContext } from 'components/purchases/PurchaseContextProvider';
 
 import BodyContainer from 'components/shared/BodyContainer';
 import Header from 'components/shared/Header';
 import Loading from 'components/shared/Loading';
 import Navbar from 'components/shared/Navbar';
 import SignedIn from 'components/shared/SignedIn';
-import { SymbolContext } from 'components/shared/SymbolContextProvider';
 
 const SpaceBetween = styled.div`
   display: flex;
@@ -22,12 +20,9 @@ const SpaceBetween = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const { isPurchaseContextReady } = useContext(PurchaseContext);
-  const { isSymbolContextReady } = useContext(SymbolContext);
-
   return (
     <SignedIn>
-      <Loading loading={!(isPurchaseContextReady && isSymbolContextReady)}>
+      <Loading>
         <Navbar selected="home" />
         <motion.div
           initial={{ opacity: 0 }}

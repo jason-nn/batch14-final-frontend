@@ -1,10 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext, useMemo } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
+import styled from 'styled-components';
 
-interface LoadingProps {
-  loading: boolean;
-}
+import { PortfolioContext } from 'components/home/PortfolioContextProvider';
+
+import { PurchaseContext } from 'components/purchases/PurchaseContextProvider';
+
+import { SymbolContext } from 'components/shared/SymbolContextProvider';
 
 const LoadingOuterContainer = styled.div`
   width: 100vw;
@@ -23,10 +25,24 @@ const LoadingOuterContainer = styled.div`
   align-items: center;
 `;
 
-const Loading: React.FC<LoadingProps> = ({ loading, children }) => {
+const Loading: React.FC = ({ children }) => {
+  const { isPurchaseContextReady } = useContext(PurchaseContext);
+  const { isSymbolContextReady } = useContext(SymbolContext);
+  const { isPortfolioContextReady } = useContext(PortfolioContext);
+
+  const isLoading = useMemo(
+    () =>
+      !(
+        isPurchaseContextReady &&
+        isSymbolContextReady &&
+        isPortfolioContextReady
+      ),
+    [isPurchaseContextReady, isSymbolContextReady, isPortfolioContextReady]
+  );
+
   return (
     <div>
-      {loading ? (
+      {isLoading ? (
         <LoadingOuterContainer>
           <ClipLoader color="#1D4ED8" size={200} />
         </LoadingOuterContainer>

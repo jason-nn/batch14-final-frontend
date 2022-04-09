@@ -1,18 +1,31 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { PurchaseContext } from 'components/purchases/PurchaseContextProvider';
 
 import Portfolio from 'schemas/portfolio';
 
-const PortfolioContext = React.createContext<{ portfolio: Portfolio }>({
+const PortfolioContext = React.createContext<{
+  portfolio: Portfolio;
+  isPortfolioContextReady: boolean;
+  setIsPortfolioContextReady: React.Dispatch<
+    React.SetStateAction<boolean>
+  > | null;
+}>({
   portfolio: {},
+  isPortfolioContextReady: false,
+  setIsPortfolioContextReady: null,
 });
 
 const PortfolioContextProvider: React.FC = ({ children }) => {
   const { userPurchases } = useContext(PurchaseContext);
 
-  const portfolio = useMemo(
-    () =>
+  const [portfolio, setPortfolio] = useState<Portfolio>({});
+
+  const [isPortfolioContextReady, setIsPortfolioContextReady] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    setPortfolio(
       userPurchases.reduce((accumulator: Portfolio, purchase) => {
         const symbol = purchase.cryptocurrency.symbol;
         const currentPrice = purchase.cryptocurrency.price;
@@ -31,12 +44,15 @@ const PortfolioContextProvider: React.FC = ({ children }) => {
           };
         }
         return accumulator;
-      }, {}),
-    [userPurchases]
-  );
+      }, {})
+    );
+    setIsPortfolioContextReady(true);
+  }, [userPurchases]);
 
   return (
-    <PortfolioContext.Provider value={{ portfolio }}>
+    <PortfolioContext.Provider
+      value={{ portfolio, isPortfolioContextReady, setIsPortfolioContextReady }}
+    >
       {children}
     </PortfolioContext.Provider>
   );
