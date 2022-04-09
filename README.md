@@ -8,19 +8,19 @@ hodlr is an app I built to automate the manual process I used to track crypto pr
 
 ## Installation and Setup
 
-```console
+```zsh
 git clone git@github.com:jason-nn/batch14-final-frontend.git
 ```
 
-```console
+```zsh
 cd batch14-final-frontend
 ```
 
-```console
+```zsh
 npm install
 ```
 
-```console
+```zsh
 npm start
 ```
 
