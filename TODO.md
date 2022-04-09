@@ -1,4 +1,4 @@
 # To Do
 
-- [ ] fix memory leak
+- [ ] work with prod urls
 - [ ] add readme
