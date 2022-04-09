@@ -8,10 +8,8 @@ import { UserContext } from 'components/shared/UserContextProvider';
 import SecondaryButton from 'components/shared/buttons/SecondaryButton';
 import { ToastContext } from 'components/shared/toasts/ToastContextProvider';
 
-import features from 'utils/features';
-
 interface NavbarProps {
-  selected: 'home' | 'purchases' | 'alerts';
+  selected: 'home' | 'purchases';
 }
 
 const NavbarContainer = styled.div`
@@ -97,14 +95,6 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
             route="/purchases"
             text="Purchases"
           />
-          {features.alerts ? (
-            <NavItem
-              selected={selected}
-              matchSelectedTo="alerts"
-              route="/alerts"
-              text="Price Alerts"
-            />
-          ) : null}
         </NavLeft>
         <NavRight>
           <SecondaryButton
