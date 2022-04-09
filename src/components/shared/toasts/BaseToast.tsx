@@ -18,7 +18,7 @@ interface BaseToastInnerContainerProps {
 }
 
 const BaseToastOuterContainer = styled.div`
-  z-index: 2;
+  z-index: 3;
   position: fixed;
   bottom: 30px;
   right: 60px;
