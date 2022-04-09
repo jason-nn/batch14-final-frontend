@@ -7,4 +7,12 @@ interface Portfolio {
   };
 }
 
+interface PortfolioValue {
+  symbol: string;
+  currentPrice: number;
+  sum: number;
+  sumProduct: number;
+}
+
 export default Portfolio;
+export type { PortfolioValue };
