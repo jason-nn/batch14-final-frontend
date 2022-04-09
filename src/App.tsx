@@ -21,13 +21,12 @@ import SignIn from 'pages/SignIn';
 import SignUp from 'pages/SignUp';
 
 import features from 'utils/features';
-import urls from 'utils/urls';
 
 const App: React.FC = () => {
-  axios.defaults.baseURL = urls.backend;
+  axios.defaults.baseURL = process.env.REACT_APP_BACKEND;
 
   return (
-    <ActionCableProvider url={urls.websocket}>
+    <ActionCableProvider url={process.env.REACT_APP_WEBSOCKET}>
       <UserContextProvider>
         <SymbolContextProvider>
           <PurchaseContextProvider>
