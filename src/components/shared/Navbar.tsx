@@ -2,10 +2,13 @@ import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { PurchaseContext } from 'components/purchases/PurchaseContextProvider';
+
 import Logo from 'components/shared/Logo';
 import NavItem from 'components/shared/NavItem';
 import { UserContext } from 'components/shared/UserContextProvider';
 import SecondaryButton from 'components/shared/buttons/SecondaryButton';
+import { SymbolContext } from 'components/shared/SymbolContextProvider';
 import { ToastContext } from 'components/shared/toasts/ToastContextProvider';
 
 interface NavbarProps {
@@ -60,6 +63,9 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
   const { userDispatch } = useContext(UserContext);
   const { toastDispatch } = useContext(ToastContext);
 
+  const { setIsPurchaseContextReady } = useContext(PurchaseContext);
+  const { setIsSymbolContextReady } = useContext(SymbolContext);
+
   const [buttonIsLoadingValue, setbuttonIsLoadingValue] = useState(false);
 
   const onClick = () => {
@@ -72,6 +78,9 @@ const Navbar: React.FC<NavbarProps> = ({ selected }) => {
         });
         toastDispatch &&
           toastDispatch({ type: 'SUCCESS', message: 'Successful sign out' });
+
+        setIsPurchaseContextReady && setIsPurchaseContextReady(false);
+        setIsSymbolContextReady && setIsSymbolContextReady(false);
       }, 500);
     }
   };

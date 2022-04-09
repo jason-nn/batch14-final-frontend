@@ -10,10 +10,14 @@ const PurchaseContext = React.createContext<{
   userPurchases: Purchase[];
   setUserPurchases: React.Dispatch<React.SetStateAction<Purchase[]>> | null;
   isPurchaseContextReady: boolean;
+  setIsPurchaseContextReady: React.Dispatch<
+    React.SetStateAction<boolean>
+  > | null;
 }>({
   userPurchases: [],
   setUserPurchases: null,
   isPurchaseContextReady: false,
+  setIsPurchaseContextReady: null,
 });
 
 const PurchaseContextProvider: React.FC = ({ children }) => {
@@ -41,7 +45,12 @@ const PurchaseContextProvider: React.FC = ({ children }) => {
 
   return (
     <PurchaseContext.Provider
-      value={{ userPurchases, setUserPurchases, isPurchaseContextReady }}
+      value={{
+        userPurchases,
+        setUserPurchases,
+        isPurchaseContextReady,
+        setIsPurchaseContextReady,
+      }}
     >
       {children}
     </PurchaseContext.Provider>

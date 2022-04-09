@@ -7,9 +7,11 @@ import hodlr from 'services/hodlr';
 const SymbolContext = React.createContext<{
   symbols: string[];
   isSymbolContextReady: boolean;
+  setIsSymbolContextReady: React.Dispatch<React.SetStateAction<boolean>> | null;
 }>({
   symbols: [],
   isSymbolContextReady: false,
+  setIsSymbolContextReady: null,
 });
 
 const SymbolContextProvider: React.FC = ({ children }) => {
@@ -36,7 +38,9 @@ const SymbolContextProvider: React.FC = ({ children }) => {
   }, [userState]);
 
   return (
-    <SymbolContext.Provider value={{ symbols, isSymbolContextReady }}>
+    <SymbolContext.Provider
+      value={{ symbols, isSymbolContextReady, setIsSymbolContextReady }}
+    >
       {children}
     </SymbolContext.Provider>
   );
