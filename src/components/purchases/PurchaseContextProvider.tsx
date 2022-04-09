@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ActionCableConsumer } from 'react-actioncable-provider';
 
 import { UserContext } from 'components/shared/UserContextProvider';
 
@@ -33,24 +32,7 @@ const PurchaseContextProvider: React.FC = ({ children }) => {
 
   return (
     <PurchaseContext.Provider value={{ userPurchases, setUserPurchases }}>
-      <ActionCableConsumer
-        channel={{ channel: 'PriceUpdateChannel' }}
-        onReceived={() => {
-          if (userState.token) {
-            hodlr
-              .purchases(userState.token)
-              .then((response) => {
-                console.log(response);
-                setUserPurchases(response.data);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          }
-        }}
-      >
-        {children}
-      </ActionCableConsumer>
+      {children}
     </PurchaseContext.Provider>
   );
 };

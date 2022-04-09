@@ -1,4 +1,4 @@
 # To Do
 
-- [ ] deploy
+- [ ] fix memory leak
 - [ ] add readme

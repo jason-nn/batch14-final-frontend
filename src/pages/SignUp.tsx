@@ -49,7 +49,7 @@ const SignUp: React.FC = () => {
           });
           setSubmittingValue(false);
           toastDispatch &&
-            toastDispatch({ type: 'SUCCESS', message: 'Successful sign in' });
+            toastDispatch({ type: 'SUCCESS', message: 'Successful sign up' });
           navigate('/', { replace: true });
         } else {
           setSubmittingValue(false);
