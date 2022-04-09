@@ -31,7 +31,7 @@ const PortfolioRow: React.FC<PortfolioRowProps> = ({
       <ProfitAndLossContainer value={profitAndLoss}>
         <SpaceBetween>
           <span>{profitAndLoss < 0 ? '-' : '+'}</span>
-          <span>${Math.abs(profitAndLoss).toFixed(2)}</span>
+          <span>$&thinsp;{Math.abs(profitAndLoss).toFixed(2)}</span>
         </SpaceBetween>
       </ProfitAndLossContainer>
     </TableRowContainer>

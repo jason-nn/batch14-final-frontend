@@ -31,7 +31,7 @@ const DollarCostAverageRow: React.FC<DollarCostAverageRowProps> = ({
       <ProfitAndLossContainer value={profitAndLoss}>
         <SpaceBetween>
           <span>{profitAndLoss < 0 ? '-' : '+'}</span>
-          <span>{`${Math.abs(profitAndLoss * 100).toFixed(2)}%`}</span>
+          <span>{`${Math.abs(profitAndLoss * 100).toFixed(2)}`}&thinsp;%</span>
         </SpaceBetween>
       </ProfitAndLossContainer>
     </TableRowContainer>
