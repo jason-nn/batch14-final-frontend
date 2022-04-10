@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { ActionCableConsumer } from 'react-actioncable-provider';
 
 import { UserContext } from 'components/shared/UserContextProvider';
 
@@ -28,6 +29,11 @@ const PurchaseContextProvider: React.FC = ({ children }) => {
   const [isPurchaseContextReady, setIsPurchaseContextReady] =
     useState<boolean>(false);
 
+  const isSignedInValue = useMemo(
+    () => userState.email && userState.token && userState.id,
+    [userState.email, userState.token, userState.id]
+  );
+
   useEffect(() => {
     if (userState.token) {
       hodlr
@@ -52,6 +58,24 @@ const PurchaseContextProvider: React.FC = ({ children }) => {
         setIsPurchaseContextReady,
       }}
     >
+      {isSignedInValue && (
+        <ActionCableConsumer
+          channel={{ channel: 'PriceUpdateChannel' }}
+          onReceived={() => {
+            if (userState.token) {
+              hodlr
+                .purchases(userState.token)
+                .then((response) => {
+                  console.log(response);
+                  setUserPurchases && setUserPurchases(response.data);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            }
+          }}
+        />
+      )}
       {children}
     </PurchaseContext.Provider>
   );
